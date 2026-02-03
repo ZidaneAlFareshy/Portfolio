@@ -84,7 +84,6 @@ export const Hero = () => {
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
               <Button
                 size="lg"
-                className="cursor-pointer"
                 onClick={() => {
                   document
                     .getElementById("contact")

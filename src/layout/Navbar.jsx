@@ -53,9 +53,7 @@ export const Navbar = () => {
               .getElementById("contact")
               ?.scrollIntoView({ behavior: "smooth" });
           }}>
-          <Button size="sm" className="cursor-pointer">
-            Contact Me
-          </Button>
+          <Button size="sm">Contact Me</Button>
         </div>
 
         {/* Mobile Menu Button */}

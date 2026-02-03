@@ -95,6 +95,21 @@
   .font-serif {
     font-family: "Playfair Display", serif;
   }
+
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+
+    /* Pastikan elemen clickable juga tidak memunculkan kursor tangan default */
+    a,
+    button,
+    [role="button"],
+    input,
+    select {
+      cursor: none;
+    }
+  }
 }
 
 /* Matikan animasi fade default browser */
