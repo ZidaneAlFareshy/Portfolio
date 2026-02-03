@@ -1,1 +1,323 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --radius: 0.75rem;
+
+  --color-highlight: var(--highlight);
+  --color-surface: var(--surface);
+}
+
+@layer base {
+  :root {
+    --background: #f2f5f8;
+    --foreground: #0f172a;
+
+    --card: #ffffff;
+    --surface: #ffffff;
+
+    --primary: #20b2a6;
+    --primary-foreground: #ffffff;
+
+    --secondary: #e0f2f1;
+    --secondary-foreground: #115e59;
+
+    --muted: #e2e8f0;
+    --muted-foreground: #64748b;
+
+    --border: #cbd5e1;
+
+    --highlight: #d97706;
+  }
+
+  .dark {
+    --background: #0f1418;
+    --foreground: #f0f2f5;
+
+    --card: #141a1f;
+    --surface: #1a2329;
+
+    --primary: #20b2a6;
+    --primary-foreground: #ffffff;
+
+    --secondary: #1f2830;
+    --secondary-foreground: #20b2a6;
+
+    --muted: #252e37;
+    --muted-foreground: #7a8491;
+
+    --border: #242b32;
+
+    --highlight: #f5a623;
+  }
+
+  /* --- GLOBAL RESET --- */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+
+    /* Pastikan elemen clickable juga tidak memunculkan kursor tangan default */
+    a,
+    button,
+    [role="button"],
+    input,
+    select {
+      cursor: none;
+    }
+  }
+}
+
+/* Matikan animasi fade default browser */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Layer LAMA (Old):
+   Tetap diam di tempat (z-index lebih kecil).
+*/
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+/* Layer BARU (New):
+   Berada di atas (z-index besar).
+   Menjalankan animasi clip-path (lingkaran membesar).
+*/
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: circular-reveal 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  pointer-events: none;
+}
+
+/* Definisi Animasi Lingkaran 
+*/
+@keyframes circular-reveal {
+  from {
+    /* Lingkaran kecil di posisi klik mouse */
+    clip-path: circle(0px at var(--reveal-x) var(--reveal-y));
+  }
+  to {
+    /* Lingkaran membesar menutupi layar */
+    clip-path: circle(
+      var(--reveal-end-radius) at var(--reveal-x) var(--reveal-y)
+    );
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px
+      color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 30px
+        color-mix(in srgb, var(--color-primary) 20%, transparent),
+      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes slow-drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(20px, -30px);
+    }
+    50% {
+      transform: translate(-15px, 20px);
+    }
+    75% {
+      transform: translate(30px, 10px);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 35s linear infinite;
+  }
+
+  /* Update durasi marquee biasa agar selaras */
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+
+  /* Utility untuk masking gradien di pinggir layar agar tidak putus kasar */
+  .mask-gradient {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  @keyframes animated-border {
+    0% {
+      stroke-dashoffset: 400;
+    }
+    100% {
+      stroke-dashoffset: -550;
+    }
+  }
+
+  .group:hover .animated-border-path {
+    animation: animated-border 1.5s linear infinite;
+  }
+  .animated-border:hover {
+    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
+  }
+  .timeline-glow {
+    box-shadow: 0 0 40px
+        color-mix(in srgb, var(--color-primary) 35%, transparent),
+      0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+}
