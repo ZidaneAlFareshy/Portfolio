@@ -6,11 +6,15 @@ import { Experience } from "@/sections/Experience";
 import { Testimonials } from "@/sections/Testimonials";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/layout/Footer";
+import { ThemeToggle } from "@/components/ThemeToggle";
+// import Cursor from "@/components/Cursor";
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* <Cursor /> */}
       <Navbar />
+      <ThemeToggle />
       <main>
         <Hero />
         <About />

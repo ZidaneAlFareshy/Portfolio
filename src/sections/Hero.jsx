@@ -69,7 +69,7 @@ export const Hero = () => {
                 <br />
                 experience with
                 <br />
-                <span className="font-serif italic font-normal text-white">
+                <span className="font-serif italic font-normal text-foreground">
                   precision.
                 </span>
               </h1>
