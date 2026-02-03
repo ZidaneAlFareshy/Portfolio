@@ -1,45 +1,10 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
-
-const projects = [
-  {
-    title: "Fintech Dashboard",
-    description: "A dashboard for monitoring financial metrics and KPIs.",
-    image: "/projects/project1.png",
-    tags: ["React", "D3.js", "Tailwind CSS"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "E-commerce Platform",
-    description:
-      "A full-featured online shopping experience with cart and checkout.",
-    image: "/projects/project2.png",
-    tags: ["React", "Node.js", "MongoDB"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "Social Media App",
-    description:
-      "A social networking app with real-time chat and media sharing.",
-    image: "/projects/project3.png",
-    tags: ["React Native", "Firebase", "GraphQL"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "Project Management Tool",
-    description:
-      "A collaborative tool for managing tasks, projects, and teams.",
-    image: "/projects/project4.png",
-    tags: ["Vue.js", "Laravel", "MySQL"],
-    link: "#",
-    github: "#",
-  },
-];
+import { projectsData } from "@/data/projectsData";
+import { Link } from "react-router-dom";
 
 export const Projects = () => {
+  const featuredProjects = projectsData.slice(0, 4);
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Bg Glows */}
@@ -65,12 +30,12 @@ export const Projects = () => {
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
+          {featuredProjects.map((project, idx) => (
             <div
-              key={idx}
+              key={project.id}
               className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
-              {/* Image */}
+              {/* Image Area */}
               <div className="relative overflow-hidden aspect-video">
                 <img
                   src={project.image}
@@ -78,7 +43,8 @@ export const Projects = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
-                {/* Overlay Links */}
+
+                {/* Overlay Icons */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
                     href={project.link}
@@ -93,13 +59,12 @@ export const Projects = () => {
                 </div>
               </div>
 
-              {/* Content */}
+              {/* Text Area */}
               <div className="p-6 space-y-4">
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:translate-y-1 transition-all" />
                 </div>
                 <p className="text-muted-foreground text-sm">
                   {project.description}
@@ -108,7 +73,7 @@ export const Projects = () => {
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
-                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300">
+                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground">
                       {tag}
                     </span>
                   ))}
@@ -120,10 +85,12 @@ export const Projects = () => {
 
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
-          <AnimatedBorderButton>
-            View All Projects
-            <ArrowUpRight className="w-5 h-5" />
-          </AnimatedBorderButton>
+          <Link to="/projects">
+            <AnimatedBorderButton>
+              View All Projects
+              <ArrowUpRight className="w-5 h-5" />
+            </AnimatedBorderButton>
+          </Link>
         </div>
       </div>
     </section>

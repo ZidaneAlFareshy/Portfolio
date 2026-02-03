@@ -1,16 +1,18 @@
 import { Button } from "@/components/Button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  // { href: "#testimonials", label: "Testimonials" },
+  // { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Experience", href: "/#experience" },
 ];
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,12 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleContactClick = () => {
+    setIsMobileMenuOpen(false);
+    navigate("/#contact");
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
@@ -46,16 +54,11 @@ export const Navbar = () => {
         </div>
 
         {/* CTA Button */}
-        <div
-          className="hidden md:block"
-          onClick={() => {
-            document
-              .getElementById("contact")
-              ?.scrollIntoView({ behavior: "smooth" });
-          }}>
-          <Button size="sm">Contact Me</Button>
+        <div className="hidden md:block">
+          <Button size="sm" onClick={handleContactClick}>
+            Contact Me
+          </Button>
         </div>
-
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-foreground cursor-pointer"
@@ -77,13 +80,7 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button
-              onClick={() => {
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" });
-                setIsMobileMenuOpen(false);
-              }}>
+            <Button onClick={handleContactClick} className="w-full">
               Contact Me
             </Button>
           </div>
