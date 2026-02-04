@@ -2,7 +2,7 @@ export const projectsData = [
   {
     id: 1,
     title: "Fintech Dashboard",
-    category: "Web Development",
+    categories: ["Web Development"],
     description: "A dashboard for monitoring financial metrics and KPIs.",
     image: "/projects/project1.png",
     tags: ["React", "D3.js", "Tailwind CSS"],
@@ -12,7 +12,7 @@ export const projectsData = [
   {
     id: 2,
     title: "E-commerce Platform",
-    category: "Web Development",
+    categories: ["Web Development"],
     description: "Full-featured online shopping experience.",
     image: "/projects/project2.png",
     tags: ["React", "Node.js", "MongoDB"],
@@ -22,7 +22,7 @@ export const projectsData = [
   {
     id: 3,
     title: "Social Media App",
-    category: "Mobile Development",
+    categories: ["Web Development"],
     description: "Social networking app with real-time chat.",
     image: "/projects/project3.png",
     tags: ["React Native", "Firebase"],
@@ -32,7 +32,7 @@ export const projectsData = [
   {
     id: 4,
     title: "Minimalist Brand",
-    category: "Design",
+    categories: ["UI/UX Design"],
     description: "Brand identity for a modern coffee shop.",
     image: "/projects/project4.png",
     tags: ["Figma", "Illustrator"],
@@ -42,7 +42,7 @@ export const projectsData = [
   {
     id: 5,
     title: "Health Tracker",
-    category: "Mobile Development",
+    categories: ["Web Development", "UI/UX Design"],
     description: "Tracking daily steps and calories.",
     image: "/projects/project1.png",
     tags: ["Flutter", "Dart"],

@@ -7,13 +7,13 @@ export const AllProjects = () => {
 
   const categories = [
     "All",
-    ...new Set(projectsData.map((item) => item.category)),
+    ...new Set(projectsData.flatMap((item) => item.categories)),
   ];
 
   const filteredProjects =
     activeCategory === "All"
       ? projectsData
-      : projectsData.filter((item) => item.category === activeCategory);
+      : projectsData.filter((item) => item.categories.includes(activeCategory));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -78,9 +78,15 @@ export const AllProjects = () => {
             {/* Content */}
             <div className="p-6 space-y-4">
               <div className="flex items-start justify-between">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">
-                  {project.category}
-                </span>
+                <div className="flex flex-wrap gap-2">
+                  {project.categories.map((cat, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary">
+                      {cat}
+                    </span>
+                  ))}
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-3">{project.title}</h3>
               <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-1">

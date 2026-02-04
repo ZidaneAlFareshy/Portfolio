@@ -1,29 +1,29 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { Code2, Lightbulb, Rocket, Users, CheckCircle } from "lucide-react";
 
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
+    title: "Full Stack Mastery",
     description:
-      "Writing maintainable and efficient code following best practices and design patterns.",
+      "Developing robust applications using Laravel, React, and mobile technologies.",
   },
   {
-    icon: Rocket,
-    title: "Performance",
+    icon: Lightbulb,
+    title: "UI/UX Driven",
     description:
-      "Optimizing applications for speed and responsiveness to ensure a smooth user experience.",
+      "Creating high-fidelity prototypes and design systems that prioritize user needs.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Quality First",
+    description:
+      "Ensuring application reliability through systematic testing and attention to logic errors.",
   },
   {
     icon: Users,
     title: "Collaboration",
     description:
       "Working closely with cross-functional teams to deliver high-quality software solutions.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Staying updated with the latest technologies and trends to bring fresh ideas to projects.",
   },
 ];
 
@@ -41,43 +41,34 @@ export const About = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building the future,
+              Bridging design and code
               <span className="font-serif italic font-normal text-foreground">
                 {" "}
-                one component at a time.
+                with functional excellence.
               </span>
             </h2>
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                sequi cumque consequatur officia quaerat magnam provident iusto
-                consectetur enim, inventore, quos labore aut temporibus ex ab,
-                voluptas voluptatum vero officiis!
+                As a UI/UX Designer and Full Stack Developer, I focus on
+                creating digital solutions that are not only visually aesthetic
+                but also technically sound. My journey includes mentoring
+                upcoming developers and building professional-grade web
+                interfaces using Laravel and Tailwind CSS.
               </p>
 
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
-                modi provident corrupti cumque dignissimos adipisci, earum,
-                recusandae non repellat excepturi ipsa numquam. Accusantium
-                praesentium voluptate labore quia voluptatum error nobis?
-              </p>
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Perferendis, maxime. Eligendi quod similique explicabo
-                repellendus numquam aperiam ad temporibus, officiis autem
-                veritatis vero assumenda ea saepe inventore sequi dolores
-                facere!
+                Currently, I am expanding my horizons into **Quality
+                Assurance**. I believe that great software isn't just about
+                features, but about reliability and a bug-free experience for
+                the end user.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground">
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
-                nihil ut delectus! Amet quidem, eveniet itaque natus dicta unde
-                iste corporis corrupti dolorum voluptatum voluptas libero alias
-                eius aperiam quasi."
+                "Committed to continuous learning and creating works that are
+                both aesthetic and functional."
               </p>
             </div>
           </div>

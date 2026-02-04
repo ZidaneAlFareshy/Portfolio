@@ -2,9 +2,13 @@ import { Github, Linkedin, Twitter, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/ZidaneAlFareshy", label: "GitHub" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
+    label: "LinkedIn",
+  },
+  // { icon: Twitter, href: "#", label: "Twitter" },
 ];
 
 const footerLinks = [
@@ -49,6 +53,7 @@ export const Footer = () => {
             {socialLinks.map((social) => (
               <a
                 key={social.label}
+                target="_blank"
                 href={social.href}
                 aria-label={social.label}
                 className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all">
