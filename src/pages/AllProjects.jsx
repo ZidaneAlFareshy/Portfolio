@@ -1,23 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { projectsData } from "@/data/projectsData";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Lock, Figma, ChevronDown } from "lucide-react";
+import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 
 export const AllProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(6);
 
-  const categories = [
-    "All",
-    ...new Set(projectsData.map((item) => item.category)),
-  ];
+  const categories = useMemo(() => {
+    return ["All", ...new Set(projectsData.flatMap((item) => item.categories))];
+  }, []);
 
   const filteredProjects =
     activeCategory === "All"
       ? projectsData
-      : projectsData.filter((item) => item.category === activeCategory);
+      : projectsData.filter((item) => item.categories.includes(activeCategory));
+
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [activeCategory]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Load more
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
 
   return (
     <div className="pt-32 pb-20 container mx-auto px-6 min-h-screen">
@@ -49,62 +59,131 @@ export const AllProjects = () => {
 
       {/* Grid Projects */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in animation-delay-200">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="group glass rounded-2xl overflow-hidden flex flex-col">
-            {/* Image */}
-            <div className="relative overflow-hidden aspect-video">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a
-                  href={project.link}
-                  className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all">
-                  <ArrowUpRight size={20} />
-                </a>
-                <a
-                  href={project.github}
-                  className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all">
-                  <Github size={20} />
-                </a>
+        {filteredProjects.slice(0, visibleCount).map((project) => {
+          const isUIUX = project.categories.includes("UI/UX Design");
+          const isDev =
+            project.categories.includes("Web Development") ||
+            project.categories.includes("Mobile App");
+          const isPrivate = !project.github && !project.figma;
+
+          return (
+            <div
+              key={project.id}
+              className="group glass rounded-2xl overflow-hidden flex flex-col transform transition-all duration-300 hover:-translate-y-1">
+              {/* Image Container */}
+              <div className="relative overflow-hidden aspect-video bg-muted/20">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Overlay Action Buttons */}
+                <div
+                  className="
+                  absolute inset-0 flex gap-3 transition-all duration-300
+                  opacity-100 items-end justify-end p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent
+                  md:opacity-0 md:group-hover:opacity-100 md:items-center md:justify-center md:bg-black/50 md:from-transparent md:to-transparent
+                ">
+                  {!isPrivate && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                      title="View Live Project">
+                      <ArrowUpRight size={18} className="md:w-5 md:h-5" />
+                    </a>
+                  )}
+
+                  {isDev &&
+                    (!isPrivate ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                        title="View Source Code">
+                        <Github size={18} className="md:w-5 md:h-5" />
+                      </a>
+                    ) : (
+                      <div
+                        className="p-2.5 md:p-3 rounded-full glass bg-black/80 text-white/70 cursor-not-allowed shadow-lg border border-white/10"
+                        title="Project is Strictly Private / NDA Protected">
+                        <Lock size={18} className="md:w-5 md:h-5" />
+                      </div>
+                    ))}
+
+                  {isUIUX && project.figma && (
+                    <a
+                      href={project.figma}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                      title="View Figma File">
+                      <Figma size={18} className="md:w-5 md:h-5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-4 flex flex-col flex-grow">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex flex-wrap gap-2">
+                    {project.categories.map((cat, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary whitespace-nowrap">
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+
+                  {isDev && isPrivate && (
+                    <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50">
+                      PRIVATE
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-1">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border/50">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-md bg-surface text-[11px] font-medium border border-border/50 text-muted-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-
-            {/* Content */}
-            <div className="p-6 space-y-4">
-              <div className="flex items-start justify-between">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">
-                  {project.category}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-1">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Pesan jika kosong */}
       {filteredProjects.length === 0 && (
-        <div className="text-center py-20 text-muted-foreground">
+        <div className="text-center py-20 text-muted-foreground animate-fade-in">
           No projects found in this category.
+        </div>
+      )}
+
+      {visibleCount < filteredProjects.length && (
+        <div className="flex justify-center mt-12 animate-fade-in">
+          <button onClick={handleLoadMore}>
+            <AnimatedBorderButton>
+              Load More Projects
+              <ChevronDown className="w-5 h-5" />
+            </AnimatedBorderButton>
+          </button>
         </div>
       )}
     </div>

@@ -28,7 +28,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "Cirebon, Indonesia",
+    value: "Indramayu, Indonesia",
     href: "#",
   },
 ];
@@ -95,7 +95,7 @@ export const Contact = () => {
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
@@ -114,7 +114,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-5xl mx-auto">
           <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>

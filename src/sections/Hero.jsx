@@ -6,22 +6,24 @@ import {
   Github,
   Linkedin,
   Twitter,
+  Dribbble,
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
   "React.js",
   "Tailwind CSS",
+  "Bootstrap",
+  "Kotlin",
+  "Flutter",
   "Node.js",
   "Figma",
   "Git",
   "Github Actions",
   "Laravel",
-  "Vercel",
-  "Netlify",
   "Wordpress",
   "MySQL",
-  "Vite",
+  "Postman",
 ];
 
 export const Hero = () => {
@@ -58,7 +60,7 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                UI/UX Designer • Software Engineer • QA Engineer
+                UI/UX Designer • Software Engineer • QA Enthusiast
               </span>
             </div>
 
@@ -74,9 +76,9 @@ export const Hero = () => {
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Jindan - a software engineer specialist in React,
-                Next.js and Typescript. I build scalable , performant web
-                applications that user love.
+                Hi, I'm Jindan. A Full Stack Developer and UI/UX Designer
+                passionate about building seamless user experiences and ensuring
+                software quality through rigorous testing.
               </p>
             </div>
 
@@ -91,21 +93,27 @@ export const Hero = () => {
                 }}>
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
-              <AnimatedBorderButton>
+              {/* <AnimatedBorderButton>
                 <Download className="w-5 h-5" /> Download CV
-              </AnimatedBorderButton>
+              </AnimatedBorderButton> */}
             </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
               <span className="text-sm text-muted-foreground">Follow Me: </span>
               {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
+                { icon: Github, href: "https://github.com/ZidaneAlFareshy" },
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
+                },
+                { icon: Dribbble, href: "#" },
+                // { icon: Twitter, href: "#" },
               ].map((social, idx) => (
                 <a
                   key={idx}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href={social.href}
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">
                   {<social.icon className="w-5 h-5" />}
