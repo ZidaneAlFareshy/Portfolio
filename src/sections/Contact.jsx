@@ -28,7 +28,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "Cirebon, Indonesia",
+    value: "Indramayu, Indonesia",
     href: "#",
   },
 ];

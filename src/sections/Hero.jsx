@@ -6,12 +6,14 @@ import {
   Github,
   Linkedin,
   Twitter,
+  Dribbble,
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
   "React.js",
   "Tailwind CSS",
+  "Bootstrap",
   "Kotlin",
   "Flutter",
   "Node.js",
@@ -22,8 +24,6 @@ const skills = [
   "Wordpress",
   "MySQL",
   "Postman",
-  "Software Testing",
-  "Manual Testing",
 ];
 
 export const Hero = () => {
@@ -107,6 +107,7 @@ export const Hero = () => {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
                 },
+                { icon: Dribbble, href: "#" },
                 // { icon: Twitter, href: "#" },
               ].map((social, idx) => (
                 <a

@@ -191,7 +191,7 @@ export const Certificates = () => {
               <CertificateCard
                 key={`row1-${idx}`}
                 cert={cert}
-                onClick={setSelectedCert} // Pass fungsi handler
+                onClick={setSelectedCert}
               />
             ))}
           </div>

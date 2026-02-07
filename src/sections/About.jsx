@@ -58,10 +58,9 @@ export const About = () => {
               </p>
 
               <p>
-                Currently, I am expanding my horizons into **Quality
-                Assurance**. I believe that great software isn't just about
-                features, but about reliability and a bug-free experience for
-                the end user.
+                Currently, I am expanding my horizons into Quality Assurance. I
+                believe that great software isn't just about features, but about
+                reliability and a bug-free experience for the end user.
               </p>
             </div>
 

@@ -1,7 +1,7 @@
 const experiences = [
   {
     period: "Jan 2026 - Present",
-    role: "Front-End Web Facilitator",
+    role: "Program Facilitator",
     company: "Dicoding",
     description:
       "Assisted participants throughout the learning program by answering questions related to materials and program flow",
@@ -28,6 +28,7 @@ const experiences = [
       "Figma",
       "Wordpress",
       "Flutter",
+      "Manual Testing",
     ],
     current: true,
   },

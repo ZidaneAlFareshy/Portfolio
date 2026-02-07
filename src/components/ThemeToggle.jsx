@@ -4,16 +4,12 @@ export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // 1. Cek Local Storage
     const savedTheme = localStorage.getItem("theme");
 
-    // 2. Cek Preferensi Sistem (Laptop/HP)
     const systemPrefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
 
-    // 3. Tentukan state awal (Prioritas: LocalStorage > Sistem)
-    // KODE LAMA ANDA SALAH DI SINI: const initialDark = savedTheme ? savedTheme === "dark" : true;
     const initialDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
 
     setIsDark(initialDark);
@@ -33,20 +29,15 @@ export const ThemeToggle = () => {
   const toggleTheme = async (event) => {
     const newMode = !isDark;
 
-    // --- LOGIKA TRANSISI BARU ---
-
-    // Jika browser tidak mendukung View Transition, pakai cara biasa
     if (!document.startViewTransition) {
       setIsDark(newMode);
       applyTheme(newMode);
       return;
     }
 
-    // Ambil posisi klik mouse
     const x = event.clientX;
     const y = event.clientY;
 
-    // Hitung jarak terjauh ke sudut layar (untuk radius lingkaran)
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)

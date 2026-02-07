@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Heart, Dribbble } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
@@ -8,7 +8,7 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
     label: "LinkedIn",
   },
-  // { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Dribbble, href: "#", label: "Dribbble" },
 ];
 
 const footerLinks = [
