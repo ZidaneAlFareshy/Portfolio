@@ -10,11 +10,9 @@ export default function Cursor() {
     const dot = cursorDotRef.current;
     const outline = cursorOutlineRef.current;
 
-    // Posisi mouse
     let mouseX = 0;
     let mouseY = 0;
 
-    // Posisi outline (untuk efek delay)
     let outlineX = 0;
     let outlineY = 0;
 
@@ -23,12 +21,10 @@ export default function Cursor() {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      // Pindahkan dot secara instan
       if (dot) {
         dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
       }
 
-      // Cek apakah elemen di bawah cursor bisa diklik
       const target = e.target;
       const isClickable =
         target.tagName.toLowerCase() === "a" ||
@@ -41,8 +37,6 @@ export default function Cursor() {
     };
 
     const animateOutline = () => {
-      // Logic interpolasi (LERP) untuk efek delay yang smooth
-      // Angka 0.15 bisa diubah (makin kecil makin lambat/floaty)
       outlineX += (mouseX - outlineX) * 0.15;
       outlineY += (mouseY - outlineY) * 0.15;
 

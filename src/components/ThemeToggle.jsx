@@ -43,7 +43,6 @@ export const ThemeToggle = () => {
       Math.max(y, window.innerHeight - y)
     );
 
-    // Set variabel CSS untuk animasi
     document.documentElement.style.setProperty("--reveal-x", `${x}px`);
     document.documentElement.style.setProperty("--reveal-y", `${y}px`);
     document.documentElement.style.setProperty(
@@ -51,13 +50,11 @@ export const ThemeToggle = () => {
       `${endRadius}px`
     );
 
-    // Mulai Transisi
     const transition = document.startViewTransition(() => {
       setIsDark(newMode);
       applyTheme(newMode);
     });
 
-    // Bersihkan variabel CSS setelah animasi selesai (Kebersihan kode)
     try {
       await transition.finished;
     } finally {
@@ -70,7 +67,6 @@ export const ThemeToggle = () => {
   return (
     <div className="fixed right-4 top-1/2 z-50 -translate-y-1/2">
       <button
-        // PENTING: Passing 'e' (event) ke fungsi
         onClick={(e) => toggleTheme(e)}
         aria-label="Toggle Theme"
         className="group relative flex h-20 w-10 flex-col items-center rounded-full 

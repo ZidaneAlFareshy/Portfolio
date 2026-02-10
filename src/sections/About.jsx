@@ -3,9 +3,9 @@ import { Code2, Lightbulb, Rocket, Users, CheckCircle } from "lucide-react";
 const highlights = [
   {
     icon: Code2,
-    title: "Full Stack Mastery",
+    title: "Front-End Expertise",
     description:
-      "Developing robust applications using Laravel, React, and mobile technologies.",
+      "Crafting immersive user interfaces with React, Tailwind CSS, and Laravel driven front-end systems.",
   },
   {
     icon: Lightbulb,
@@ -23,7 +23,7 @@ const highlights = [
     icon: Users,
     title: "Collaboration",
     description:
-      "Working closely with cross-functional teams to deliver high-quality software solutions.",
+      "Working closely with cross functional teams to deliver high quality software solutions.",
   },
 ];
 
@@ -50,11 +50,11 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                As a UI/UX Designer and Full Stack Developer, I focus on
-                creating digital solutions that are not only visually aesthetic
-                but also technically sound. My journey includes mentoring
-                upcoming developers and building professional-grade web
-                interfaces using Laravel and Tailwind CSS.
+                As a UI/UX Designer and Front-End Developer, I focus on creating
+                digital solutions that are not only visually aesthetic but also
+                technically sound. My journey includes building
+                professional-grade web interfaces using React, Laravel, and
+                Tailwind CSS.
               </p>
 
               <p>

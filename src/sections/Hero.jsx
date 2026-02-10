@@ -60,7 +60,7 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                UI/UX Designer • Software Engineer • QA Enthusiast
+                UI/UX Designer • Front-End Developer • QA Enthusiast
               </span>
             </div>
 
@@ -76,7 +76,7 @@ export const Hero = () => {
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Jindan. A Full Stack Developer and UI/UX Designer
+                Hi, I'm Jindan. A Front-End Developer and UI/UX Designer
                 passionate about building seamless user experiences and ensuring
                 software quality through rigorous testing.
               </p>
@@ -107,7 +107,6 @@ export const Hero = () => {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
                 },
-                { icon: Dribbble, href: "#" },
                 // { icon: Twitter, href: "#" },
               ].map((social, idx) => (
                 <a

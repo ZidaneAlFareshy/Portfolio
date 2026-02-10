@@ -24,7 +24,6 @@ export const AllProjects = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Load more
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 6);
   };
@@ -41,7 +40,6 @@ export const AllProjects = () => {
         </p>
       </div>
 
-      {/* Tombol Filter */}
       <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in animation-delay-100">
         {categories.map((cat) => (
           <button
@@ -60,11 +58,13 @@ export const AllProjects = () => {
       {/* Grid Projects */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in animation-delay-200">
         {filteredProjects.slice(0, visibleCount).map((project) => {
-          const isUIUX = project.categories.includes("UI/UX Design");
-          const isDev =
-            project.categories.includes("Web Development") ||
-            project.categories.includes("Mobile App");
-          const isPrivate = !project.github && !project.figma;
+          const isWebDev = project.categories.includes("Web Development");
+          const isMobile = project.categories.includes("Mobile Development");
+          const isDev = isWebDev || isMobile;
+
+          const hasGithub = !!project.github;
+          const hasLink = !!project.link;
+          const hasFigma = !!project.figma;
 
           return (
             <div
@@ -87,7 +87,8 @@ export const AllProjects = () => {
                   opacity-100 items-end justify-end p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent
                   md:opacity-0 md:group-hover:opacity-100 md:items-center md:justify-center md:bg-black/50 md:from-transparent md:to-transparent
                 ">
-                  {!isPrivate && (
+                  {/* 1. External Link (Website Live) */}
+                  {hasLink && (
                     <a
                       href={project.link}
                       target="_blank"
@@ -98,8 +99,9 @@ export const AllProjects = () => {
                     </a>
                   )}
 
+                  {/* 2. Logic GitHub */}
                   {isDev &&
-                    (!isPrivate ? (
+                    (hasGithub ? (
                       <a
                         href={project.github}
                         target="_blank"
@@ -116,7 +118,8 @@ export const AllProjects = () => {
                       </div>
                     ))}
 
-                  {isUIUX && project.figma && (
+                  {/* 3. Logic Figma */}
+                  {hasFigma && (
                     <a
                       href={project.figma}
                       target="_blank"
@@ -142,7 +145,8 @@ export const AllProjects = () => {
                     ))}
                   </div>
 
-                  {isDev && isPrivate && (
+                  {/* Badge PRIVATE */}
+                  {isDev && !hasGithub && (
                     <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50">
                       PRIVATE
                     </span>
@@ -169,13 +173,14 @@ export const AllProjects = () => {
         })}
       </div>
 
-      {/* Pesan jika kosong */}
+      {/* Pesan Kosong */}
       {filteredProjects.length === 0 && (
         <div className="text-center py-20 text-muted-foreground animate-fade-in">
           No projects found in this category.
         </div>
       )}
 
+      {/* Load More */}
       {visibleCount < filteredProjects.length && (
         <div className="flex justify-center mt-12 animate-fade-in">
           <button onClick={handleLoadMore}>

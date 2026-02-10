@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Figma, Lock } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { projectsData } from "@/data/projectsData";
 import { Link } from "react-router-dom";
@@ -30,57 +30,106 @@ export const Projects = () => {
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {featuredProjects.map((project, idx) => (
-            <div
-              key={project.id}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
-              {/* Image Area */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
+          {featuredProjects.map((project, idx) => {
+            const isWebDev = project.categories.includes("Web Development");
+            const isMobile = project.categories.includes("Mobile Development");
+            const isDev = isWebDev || isMobile;
 
-                {/* Overlay Icons */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all">
-                    <Github className="w-5 h-5" />
-                  </a>
+            const hasGithub = !!project.github;
+            const hasLink = !!project.link;
+            const hasFigma = !!project.figma;
+
+            return (
+              <div
+                key={project.id}
+                className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+                style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+                {/* Image Area */}
+                <div className="relative overflow-hidden aspect-video">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
+
+                  {/* Overlay Icons */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                    {/* 1. External Link (Website Live) */}
+                    {hasLink && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                        title="View Live Project">
+                        <ArrowUpRight className="w-5 h-5" />
+                      </a>
+                    )}
+
+                    {/* 2. Logic GitHub vs Lock */}
+                    {isDev &&
+                      (hasGithub ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                          title="View Source Code">
+                          <Github className="w-5 h-5" />
+                        </a>
+                      ) : (
+                        <div
+                          className="p-3 rounded-full glass bg-black/80 text-white/70 cursor-not-allowed shadow-lg border border-white/10"
+                          title="Project is Strictly Private / NDA Protected">
+                          <Lock className="w-5 h-5" />
+                        </div>
+                      ))}
+
+                    {/* 3. Logic Figma */}
+                    {hasFigma && (
+                      <a
+                        href={project.figma}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                        title="View Figma File">
+                        <Figma className="w-5 h-5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* Text Area */}
+                <div className="p-6 space-y-4">
+                  <div className="flex items-start justify-between">
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Badge PRIVATE */}
+                    {isDev && !hasGithub && (
+                      <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50 ml-2">
+                        PRIVATE
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-muted-foreground text-sm line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIdx) => (
+                      <span
+                        key={tagIdx}
+                        className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Text Area */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span
-                      key={tagIdx}
-                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View All CTA */}
