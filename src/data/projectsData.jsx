@@ -178,7 +178,8 @@ export const projectsData = [
     id: 16,
     title: "Lab Management",
     categories: ["Web Development"],
-    description: "Lab loan management system on a campus.",
+    description:
+      "A web based laboratory management system designed to streamline resource management, equipment inventory, scheduling, and operational workflows. Integrated with a Telegram Bot for real-time notifications, updates, and easier communication between users and administrators.",
     image: "/projects/project-14.webp",
     tags: ["Tailwind CSS", "CI", "Manual Testing", "Black Box Testing"],
     github: null,
