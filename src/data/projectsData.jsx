@@ -9,8 +9,7 @@ export const projectsData = [
       "Order management application specifically designed to simplify video editing workflows",
     image: "/projects/project-2.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 2,
@@ -19,8 +18,7 @@ export const projectsData = [
     description: "Full featured online shopping experience.",
     image: "/projects/project-5.webp",
     tags: ["Wordpress", "Elementor", "Woocommerce", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 3,
@@ -30,8 +28,7 @@ export const projectsData = [
       "An MSME platform that focuses on the cultivation and distribution of medicinal plants and traditional herbal products",
     image: "/projects/project-15.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 4,
@@ -41,7 +38,7 @@ export const projectsData = [
     image: "/projects/project-10.webp",
     tags: ["React", "Vite", "Tailwind CSS"],
     link: "https://zentry-ebon.vercel.app/",
-    github: "https://github.com/ZidaneAlFareshy/Zentry",
+    github: null,
   },
   {
     id: 5,
@@ -51,8 +48,7 @@ export const projectsData = [
       "A comprehensive tourism guide for exploring Cirebon's landmarks",
     image: "/projects/project-1.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 6,
@@ -62,8 +58,7 @@ export const projectsData = [
       "A digital educational application designed to help modern farmers improve sustainable productivity through smart technology.",
     image: "/projects/project-3.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 7,
@@ -73,8 +68,7 @@ export const projectsData = [
       "A modern interface design for a local Indonesian coffee shop brand.",
     image: "/projects/project-4.webp",
     tags: ["Figma", "UI/UX", "Tailwind CSS"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 8,
@@ -84,8 +78,7 @@ export const projectsData = [
       "An informative landing page showcasing campus facilities and programs.",
     image: "/projects/project-6.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 9,
@@ -95,9 +88,8 @@ export const projectsData = [
       "This application is designed to help organizations manage projects, resources, infrastructure, finances, and customer relationships.",
     image: "/projects/project-7.webp",
     tags: ["Laravel", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
-    github: "https://github.com/ZidaneAlFareshy/Akses-Digital",
+    figma: null,
+    github: null,
   },
   {
     id: 10,
@@ -107,8 +99,7 @@ export const projectsData = [
       "A web based retail system for managing transactions and inventory.",
     image: "/projects/project-8.webp",
     tags: ["Laravel", "Vite", "Tailwind CSS", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
   },
   {
     id: 11,
@@ -150,8 +141,7 @@ export const projectsData = [
       "Customizable digital invitations with RSVP and guest management.",
     image: "/projects/project-11.webp",
     tags: ["Laravel", "Tailwind CSS", "UI/UX"],
-    figma:
-      "https://www.figma.com/design/ue1EqmPnHMgF44ya35W586/Portofolio?node-id=2013-2859&t=agLIRPFhunKSe6jz-1",
+    figma: null,
     github: null,
   },
   {
@@ -191,7 +181,7 @@ export const projectsData = [
     description: "Digital system for creating village certificates.",
     image: "/projects/project-18.webp",
     tags: ["Bootstrap", "PHP Native", "Manual Testing", "Black Box Testing"],
-    github: "https://github.com/ZidaneAlFareshy/Surat-Desa",
+    github: null,
   },
   {
     id: 18,
@@ -201,7 +191,7 @@ export const projectsData = [
       "AI-powered mobile app for tracking fitness metrics and calories.",
     image: "/projects/project-17.webp",
     tags: ["Kotlin", "Machine Learning Implementation"],
-    github: "https://github.com/Khumairr/Fitcall",
+    github: null,
   },
   // {
   //   id: 19,

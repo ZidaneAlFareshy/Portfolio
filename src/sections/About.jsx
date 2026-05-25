@@ -50,11 +50,12 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                As a UI/UX Designer and Front-End Developer, I focus on creating
-                digital solutions that are not only visually aesthetic but also
-                technically sound. My journey includes building
-                professional-grade web interfaces using React, Laravel, and
-                Tailwind CSS.
+                As a Full-Stack Developer and UI/UX Designer, I focus on
+                creating digital solutions that are not only visually aesthetic
+                but also technically robust. My journey includes designing
+                intuitive user experiences and developing professional-grade web
+                applications using React, Laravel, Tailwind CSS, and modern
+                full-stack technologies.
               </p>
 
               <p>

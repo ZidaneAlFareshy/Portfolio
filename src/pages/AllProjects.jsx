@@ -100,7 +100,7 @@ export const AllProjects = () => {
                   )}
 
                   {/* 2. Logic GitHub */}
-                  {isDev &&
+                  {/* {isDev &&
                     (hasGithub ? (
                       <a
                         href={project.github}
@@ -116,7 +116,7 @@ export const AllProjects = () => {
                         title="Project is Strictly Private / NDA Protected">
                         <Lock size={18} className="md:w-5 md:h-5" />
                       </div>
-                    ))}
+                    ))} */}
 
                   {/* 3. Logic Figma */}
                   {hasFigma && (
@@ -146,11 +146,11 @@ export const AllProjects = () => {
                   </div>
 
                   {/* Badge PRIVATE */}
-                  {isDev && !hasGithub && (
+                  {/* {isDev && !hasGithub && (
                     <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50">
                       PRIVATE
                     </span>
-                  )}
+                  )} */}
                 </div>
 
                 <h3 className="text-xl font-bold mb-3">{project.title}</h3>

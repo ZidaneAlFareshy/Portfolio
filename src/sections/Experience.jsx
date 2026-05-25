@@ -1,21 +1,5 @@
 const experiences = [
   {
-    period: "Jan 2026 - Present",
-    role: "Program Facilitator",
-    company: "Dicoding",
-    description:
-      "Assisted participants throughout the learning program by answering questions related to materials and program flow",
-    technologies: [
-      "Google Workspace",
-      "Javascript",
-      "CSS",
-      "HTML",
-      "Public Speaking",
-      "Leadership",
-    ],
-    current: true,
-  },
-  {
     period: "Mar 2025 - Present",
     role: "UI/UX Designer & Front-End Developer",
     company: "CV Akses Digital",
@@ -31,6 +15,22 @@ const experiences = [
       "Manual Testing",
     ],
     current: true,
+  },
+  {
+    period: "Jan 2026 - Apr 2026",
+    role: "Program Facilitator",
+    company: "Dicoding",
+    description:
+      "Assisted participants throughout the learning program by answering questions related to materials and program flow",
+    technologies: [
+      "Google Workspace",
+      "Javascript",
+      "CSS",
+      "HTML",
+      "Public Speaking",
+      "Leadership",
+    ],
+    current: false,
   },
   {
     period: "Feb 2025 - Jul 2025",
