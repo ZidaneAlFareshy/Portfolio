@@ -68,7 +68,7 @@ export const Projects = () => {
                     )}
 
                     {/* 2. Logic GitHub vs Lock */}
-                    {isDev &&
+                    {/* {isDev &&
                       (hasGithub ? (
                         <a
                           href={project.github}
@@ -84,10 +84,10 @@ export const Projects = () => {
                           title="Project is Strictly Private / NDA Protected">
                           <Lock className="w-5 h-5" />
                         </div>
-                      ))}
+                      ))} */}
 
                     {/* 3. Logic Figma */}
-                    {hasFigma && (
+                    {/* {hasFigma && (
                       <a
                         href={project.figma}
                         target="_blank"
@@ -96,7 +96,7 @@ export const Projects = () => {
                         title="View Figma File">
                         <Figma className="w-5 h-5" />
                       </a>
-                    )}
+                    )} */}
                   </div>
                 </div>
 
