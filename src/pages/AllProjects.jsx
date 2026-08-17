@@ -1,11 +1,13 @@
 import { useState, useEffect, useMemo } from "react";
 import { projectsData } from "@/data/projectsData";
-import { ArrowUpRight, Github, Lock, Figma, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+import { useNavigate } from "react-router-dom";
 
 export const AllProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
+  const navigate = useNavigate();
 
   const categories = useMemo(() => {
     return ["All", ...new Set(projectsData.flatMap((item) => item.categories))];
@@ -40,6 +42,7 @@ export const AllProjects = () => {
         </p>
       </div>
 
+      {/* Filter Categories */}
       <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in animation-delay-100">
         {categories.map((cat) => (
           <button
@@ -58,17 +61,11 @@ export const AllProjects = () => {
       {/* Grid Projects */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in animation-delay-200">
         {filteredProjects.slice(0, visibleCount).map((project) => {
-          const isWebDev = project.categories.includes("Web Development");
-          const isMobile = project.categories.includes("Mobile Development");
-          const isDev = isWebDev || isMobile;
-
-          const hasGithub = !!project.github;
-          const hasLink = !!project.link;
-          const hasFigma = !!project.figma;
-
           return (
             <div
               key={project.id}
+              onClick={() => navigate(`/project/${project.id}`)}
+              /* PERBAIKAN: Hapus cursor-pointer di sini */
               className="group glass rounded-2xl overflow-hidden flex flex-col transform transition-all duration-300 hover:-translate-y-1">
               {/* Image Container */}
               <div className="relative overflow-hidden aspect-video bg-muted/20">
@@ -80,56 +77,8 @@ export const AllProjects = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Overlay Action Buttons */}
-                <div
-                  className="
-                  absolute inset-0 flex gap-3 transition-all duration-300
-                  opacity-100 items-end justify-end p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent
-                  md:opacity-0 md:group-hover:opacity-100 md:items-center md:justify-center md:bg-black/50 md:from-transparent md:to-transparent
-                ">
-                  {/* 1. External Link (Website Live) */}
-                  {hasLink && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                      title="View Live Project">
-                      <ArrowUpRight size={18} className="md:w-5 md:h-5" />
-                    </a>
-                  )}
-
-                  {/* 2. Logic GitHub */}
-                  {/* {isDev &&
-                    (hasGithub ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                        title="View Source Code">
-                        <Github size={18} className="md:w-5 md:h-5" />
-                      </a>
-                    ) : (
-                      <div
-                        className="p-2.5 md:p-3 rounded-full glass bg-black/80 text-white/70 cursor-not-allowed shadow-lg border border-white/10"
-                        title="Project is Strictly Private / NDA Protected">
-                        <Lock size={18} className="md:w-5 md:h-5" />
-                      </div>
-                    ))} */}
-
-                  {/* 3. Logic Figma */}
-                  {hasFigma && (
-                    <a
-                      href={project.figma}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 md:p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                      title="View Figma File">
-                      <Figma size={18} className="md:w-5 md:h-5" />
-                    </a>
-                  )}
-                </div>
+                {/* Optional: Efek gradient tipis saat di-hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-500" />
               </div>
 
               {/* Content */}
@@ -144,16 +93,12 @@ export const AllProjects = () => {
                       </span>
                     ))}
                   </div>
-
-                  {/* Badge PRIVATE */}
-                  {/* {isDev && !hasGithub && (
-                    <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50">
-                      PRIVATE
-                    </span>
-                  )} */}
                 </div>
 
-                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+
                 <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-1">
                   {project.description}
                 </p>
@@ -173,7 +118,6 @@ export const AllProjects = () => {
         })}
       </div>
 
-      {/* Pesan Kosong */}
       {filteredProjects.length === 0 && (
         <div className="text-center py-20 text-muted-foreground animate-fade-in">
           No projects found in this category.
