@@ -35,8 +35,8 @@ export const projectsData = [
     link: "https://gudangelektronikcrb.co.id/",
     figma: null,
     gallery: [
-      { url: "/projects/project-18.webp", label: "Admin Dashboard View" },
-      { url: "/images/mobile.jpg", label: "Mobile Responsive Design" },
+      { url: "/projects/elektronik/elektronik-1.webp", label: "User Flow" },
+      { url: "/projects/elektronik/elektronik-2.webp", label: "Wirefrime" },
     ],
   },
   {
@@ -50,11 +50,11 @@ export const projectsData = [
     image: "/projects/project-15.webp",
     tags: ["Figma", "UI/UX"],
     figma: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/projects/project-18.webp",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/projects/project-18.webp",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 4,
@@ -77,16 +77,18 @@ export const projectsData = [
     title: "Wisata Cirebon",
     categories: ["UI/UX Design"],
     description:
-      "A comprehensive tourism guide for exploring Cirebon's landmarks",
+      "UI/UX design of an interactive travel guide to explore special destinations in the Cirebon Regency area.",
     fullDescription:
-      "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
-    image: "/projects/project-1.webp",
+      "A UI/UX design project for a travel guide app that exclusively maps and promotes top destinations in Cirebon Regency, with limitations outside of Cirebon City. The primary goal of this design is to present regional tourism information through a clean and user-friendly interface.",
+    image: "/projects/wisata/project-1.webp",
     tags: ["Figma", "UI/UX"],
     figma: null,
     gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
+      { url: "/projects/wisata/wisata-1.webp", label: "Wireframe" },
+      {
+        url: "/projects/wisata/wisata-2.webp",
+        label: "High-Fidelity",
+      },
     ],
   },
   {
@@ -94,34 +96,34 @@ export const projectsData = [
     title: "Eduplants",
     categories: ["UI/UX Design"],
     description:
-      "A digital educational application designed to help modern farmers improve sustainable productivity through smart technology.",
+      "A digital educational application designed to help modern farmers increase sustainable productivity through smart technology.",
     fullDescription:
-      "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
+      "Eduplants is a UI/UX design for an agricultural education app aimed at modern farmers. The design focused on creating an inclusive and intuitive interface, making sustainable agricultural information easily accessible to all farmers.",
     image: "/projects/project-3.webp",
     tags: ["Figma", "UI/UX"],
     figma: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 7,
     title: "Indo Coffe",
     categories: ["Web Development", "UI/UX Design"],
     description:
-      "A modern interface design for a local Indonesian coffee shop brand.",
+      "Modern interface design and responsive front-end development for a local Indonesian coffee shop brand.",
     fullDescription:
-      "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
+      "An end-to-end project combining UI/UX design and front-end development for a local coffee shop. The primary focus was translating the brand identity into a visually appealing and technically optimized digital experience.",
     image: "/projects/project-4.webp",
     tags: ["Figma", "UI/UX", "Tailwind CSS"],
     figma: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 8,
@@ -131,13 +133,14 @@ export const projectsData = [
       "An informative landing page showcasing campus facilities and programs.",
     fullDescription:
       "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
-    image: "/projects/project-6.webp",
+    image: "/projects/campus/project-6.webp",
     tags: ["Figma", "UI/UX"],
     figma: null,
     gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
+      { url: "/projects/campus/campus-1.webp" },
+      {
+        url: "/projects/campus/campus-2.webp",
+      },
     ],
   },
   {
@@ -151,12 +154,12 @@ export const projectsData = [
     image: "/projects/project-7.webp",
     tags: ["Laravel", "UI/UX"],
     figma: null,
-    github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    github: "https://github.com/ZidaneAlFareshy/Akses-Digital",
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 10,
@@ -169,11 +172,11 @@ export const projectsData = [
     image: "/projects/project-8.webp",
     tags: ["Laravel", "Vite", "Tailwind CSS", "UI/UX"],
     figma: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 11,
@@ -192,11 +195,11 @@ export const projectsData = [
       "Black Box Testing",
     ],
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 12,
@@ -215,11 +218,11 @@ export const projectsData = [
       "Black Box Testing",
     ],
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 13,
@@ -233,11 +236,11 @@ export const projectsData = [
     tags: ["Laravel", "Tailwind CSS", "UI/UX"],
     figma: null,
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 14,
@@ -250,11 +253,11 @@ export const projectsData = [
     image: "/projects/project-16.webp",
     tags: ["Flutter"],
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 15,
@@ -267,11 +270,11 @@ export const projectsData = [
     image: "/projects/project-13.webp",
     tags: ["Tailwind CSS", "Laravel", "Manual Testing", "Black Box Testing"],
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 16,
@@ -284,11 +287,11 @@ export const projectsData = [
     image: "/projects/project-14.webp",
     tags: ["Tailwind CSS", "CI", "Manual Testing", "Black Box Testing"],
     github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
   {
     id: 17,
@@ -300,29 +303,29 @@ export const projectsData = [
     image: "/projects/project-18.webp",
     tags: ["Bootstrap", "PHP Native", "Manual Testing", "Black Box Testing"],
     github: "https://github.com/ZidaneAlFareshy/Surat-Desa",
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
+    // gallery: [
+    //   "/projects/project-18.webp",
+    //   "/meeting-client.jpg",
+    //   "/mobile-view.jpg",
+    // ],
   },
-  {
-    id: 18,
-    title: "Fitcal",
-    categories: ["Mobile Development"],
-    description:
-      "AI-powered mobile app for tracking fitness metrics and calories.",
-    fullDescription:
-      "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
-    image: "/projects/project-17.webp",
-    tags: ["Kotlin", "Machine Learning Implementation"],
-    github: null,
-    gallery: [
-      "/projects/project-18.webp",
-      "/meeting-client.jpg",
-      "/mobile-view.jpg",
-    ],
-  },
+  // {
+  //   id: 19,
+  //   title: "Mobile Bapelang",
+  //   categories: ["Mobile Development"],
+  //   description:
+  //     "AI-powered mobile app for tracking fitness metrics and calories.",
+  //   fullDescription:
+  //     "Ini adalah deskripsi panjang tentang project E-commerce. Dibuat menggunakan React dan Node.js...",
+  //   image: "/projects/project-17.webp",
+  //   tags: ["Kotlin", "Machine Learning Implementation"],
+  //   github: null,
+  //   gallery: [
+  //     "/projects/project-18.webp",
+  //     "/meeting-client.jpg",
+  //     "/mobile-view.jpg",
+  //   ],
+  // },
   // {
   //   id: 19,
   //   title: "Banner & Poster Design",
