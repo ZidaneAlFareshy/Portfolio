@@ -76,6 +76,10 @@ export const projectsData = [
         url: "https://zentry-ebon.vercel.app/",
       },
     ],
+    gallery: [
+      { url: "/projects/zentry/zentry-1.webp" },
+      { url: "/projects/zentry/zentry-2.webp" },
+    ],
   },
   {
     id: 5,
