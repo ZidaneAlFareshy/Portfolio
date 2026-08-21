@@ -1,10 +1,12 @@
-import { ArrowUpRight, Github, Figma, Lock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react"; // Github, Figma, Lock dihapus karena sudah tidak dipakai di sini
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { projectsData } from "@/data/projectsData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Tambahkan useNavigate
 
 export const Projects = () => {
   const featuredProjects = projectsData.slice(0, 4);
+  const navigate = useNavigate(); // Inisialisasi navigate
+
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Bg Glows */}
@@ -34,15 +36,14 @@ export const Projects = () => {
             const isWebDev = project.categories.includes("Web Development");
             const isMobile = project.categories.includes("Mobile Development");
             const isDev = isWebDev || isMobile;
-
             const hasGithub = !!project.github;
-            const hasLink = !!project.link;
-            const hasFigma = !!project.figma;
 
             return (
               <div
                 key={project.id}
-                className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+                onClick={() => navigate(`/project/${project.id}`)} // Fungsi klik ditambahkan ke detail
+                /* PERBAIKAN: Hover efek disamakan dengan AllProjects, tanpa cursor-pointer */
+                className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1 shadow-sm"
                 style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
                 {/* Image Area */}
                 <div className="relative overflow-hidden aspect-video">
@@ -53,51 +54,8 @@ export const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
 
-                  {/* Overlay Icons */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-                    {/* 1. External Link (Website Live) */}
-                    {hasLink && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                        title="View Live Project">
-                        <ArrowUpRight className="w-5 h-5" />
-                      </a>
-                    )}
-
-                    {/* 2. Logic GitHub vs Lock */}
-                    {/* {isDev &&
-                      (hasGithub ? (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                          title="View Source Code">
-                          <Github className="w-5 h-5" />
-                        </a>
-                      ) : (
-                        <div
-                          className="p-3 rounded-full glass bg-black/80 text-white/70 cursor-not-allowed shadow-lg border border-white/10"
-                          title="Project is Strictly Private / NDA Protected">
-                          <Lock className="w-5 h-5" />
-                        </div>
-                      ))} */}
-
-                    {/* 3. Logic Figma */}
-                    {/* {hasFigma && (
-                      <a
-                        href={project.figma}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                        title="View Figma File">
-                        <Figma className="w-5 h-5" />
-                      </a>
-                    )} */}
-                  </div>
+                  {/* Efek transisi overlay tipis saat hover agar lebih dramatis */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
                 </div>
 
                 {/* Text Area */}
@@ -117,7 +75,7 @@ export const Projects = () => {
                   <p className="text-muted-foreground text-sm line-clamp-2">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-auto pt-2">
                     {project.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}

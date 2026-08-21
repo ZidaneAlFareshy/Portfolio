@@ -7,7 +7,7 @@ export const ThemeToggle = () => {
     const savedTheme = localStorage.getItem("theme");
 
     const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)",
     ).matches;
 
     const initialDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
@@ -40,14 +40,14 @@ export const ThemeToggle = () => {
 
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
+      Math.max(y, window.innerHeight - y),
     );
 
     document.documentElement.style.setProperty("--reveal-x", `${x}px`);
     document.documentElement.style.setProperty("--reveal-y", `${y}px`);
     document.documentElement.style.setProperty(
       "--reveal-end-radius",
-      `${endRadius}px`
+      `${endRadius}px`,
     );
 
     const transition = document.startViewTransition(() => {
