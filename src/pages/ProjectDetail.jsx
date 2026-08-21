@@ -77,15 +77,17 @@ export const ProjectDetail = () => {
                   <Github size={18} /> Source Code
                 </a>
               )}
-              {project.figma && (
+              {project.prototypes?.map((prototype, index) => (
                 <a
-                  href={project.figma}
+                  key={index}
+                  href={prototype.url}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 border border-border rounded-xl font-medium hover:bg-surface transition-all">
-                  <Figma size={18} /> View Prototype
+                  <Figma size={18} />
+                  {prototype.label}
                 </a>
-              )}
+              ))}
             </div>
           </div>
 

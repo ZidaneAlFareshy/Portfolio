@@ -106,8 +106,13 @@ export const projectsData = [
       "Eduplants is a UI/UX design for an agricultural education app aimed at modern farmers. The design focuses on creating an inclusive and intuitive interface, making sustainable agriculture information easily accessible to all farmers.\n\nDesign Highlights:\n- Accessibility (User-Friendly): Designing clear navigation elements, easy-to-read typography, and simple iconography to keep the app user-friendly for even tech-savvy users.\n- Interactive Education Module: Creating a clean content layout to present articles, planting guides, and productivity tips in a way that is easy to understand on a mobile screen.\n- Simple User Flow: Ensuring that information retrieval and use of smart technology features can be done with minimal steps.",
     image: "/projects/eduplants/project-3.webp",
     tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/proto/m7QthIlvusR4ejggrA02qW/LIDM?node-id=105-4954&viewport=606%2C414%2C0.15&t=EQKGnmb3awCjVVY4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=105%3A4954&page-id=105%3A4096",
+    prototypes: [
+      {
+        label: "View Prototype",
+        url: "https://www.figma.com/proto/m7QthIlvusR4ejggrA02qW/LIDM?node-id=105-4954&viewport=606%2C414%2C0.15&t=EQKGnmb3awCjVVY4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=105%3A4954&page-id=105%3A4096",
+      },
+    ],
+
     gallery: [
       { url: "/projects/eduplants/eduplants-1.webp", label: "Logo" },
       { url: "/projects/eduplants/eduplants-2.webp", label: "Wireframe" },
@@ -179,12 +184,17 @@ export const projectsData = [
       "UI/UX design and front-end implementation project for a web-based Point of Sales (POS) system. Integrating order flow management, shipping status tracking, warehouse inventory, and cash flow recording into one centralized dashboard.\n\nDesign & Front-End Highlights:\n- Comprehensive Dashboard Layout: Designed a clean navigation structure (sidebar) to group complex operational modules for easy admin management.\n- Structured Order Interface: Structured the cart page with a clear visual division of space between product listing, customer data input, and billing summary to ensure accurate order entry.\n- Modern & Clean Styling: Utilized Tailwind CSS to present the interface with a clean UI style and bold accent color contrast, making data tables and forms very comfortable to read.",
     image: "/projects/project-8.webp",
     tags: ["Laravel", "Vite", "Tailwind CSS", "UI/UX"],
-    figma: null,
-    // gallery: [
-    //   "/projects/project-18.webp",
-    //   "/meeting-client.jpg",
-    //   "/mobile-view.jpg",
-    // ],
+
+    prototypes: [
+      {
+        label: "Admin Prototype",
+        url: "https://www.figma.com/proto/0DFmFsbCBXg1F5NibUKfQE/POS-2?node-id=7-26233&starting-point-node-id=7%3A26233&t=kUTrOmjFYKDirwQi-1",
+      },
+      {
+        label: "Sales Prototype",
+        url: "https://www.figma.com/proto/0DFmFsbCBXg1F5NibUKfQE/POS-2?node-id=87-20753&t=FyfSH0JBVLozGvZ7-1&scaling=min-zoom&content-scaling=fixed&page-id=19%3A11455&starting-point-node-id=87%3A19606",
+      },
+    ],
   },
   {
     id: 11,
@@ -348,57 +358,66 @@ export const projectsData = [
   },
   {
     id: 20,
-    title: "Fibertrust",
+    title: "Field Service Management",
     categories: ["Web Development", "UI/UX Design", "Web Design"],
     description:
-      "Interface design (UI/UX) and web front-end development for Fibertrust, a web application for managing trust relationships.",
+      "Working on interface design, prototype, to front-end implementation for field operational monitoring applications.",
     fullDescription:
-      "UI/UX design and front-end implementation project for Fibertrust, a web application specifically designed to facilitate the creation and management of trust relationships.\n\nDesign & Front-End Highlights:\n- Functional UI/UX Design: Designing a professional and structured interface, ensuring the flow of filling out trust agreements, reporting, and field documentation forms is very easy to understand without visual confusion.\n- Front-End Implementation: Translating visual designs into interactive and responsive web interface components, ensuring ease of use and smooth page transitions across various web screen sizes.\n- Data Input Optimization: Simplifying the layout of complex data collection forms, so that officers can enter data quickly and accurately while on duty.",
+      "On this Fibertrust project, I handled the process from start to finish, from conceptualizing the design to coding the interface. This application is primarily used to monitor tasks and report on field workers.\n\nMy work began with designing the UI and creating an interactive prototype in Figma to ensure the application flow was user-friendly. Once the design was finalized, I executed the front-end interface using a combination of Tailwind CSS and the Laravel templating ecosystem.",
     image: "/projects/fibertrust/fibertrust.webp",
     tags: ["Figma", "Tailwind CSS", "Laravel", "UI/UX"],
-    github: null,
-    gallery: [
-      { url: "/projects/fibertrust/fibertrust-1.webp", label: "Wireframe" },
-      { url: "/projects/fibertrust/fibertrust-2.webp", label: "High-Fidelity" },
-    ],
-  },
-  {
-    id: 21,
-    title: "Community Management App",
-    categories: ["UI/UX Design", "Mobile Design"],
-    description:
-      "A digital educational application designed to help modern farmers increase sustainable productivity through smart technology.",
-    fullDescription:
-      "Eduplants is a UI/UX design for an agricultural education app aimed at modern farmers. The design focuses on creating an inclusive and intuitive interface, making sustainable agriculture information easily accessible to all farmers.\n\nDesign Highlights:\n- Accessibility (User-Friendly): Designing clear navigation elements, easy-to-read typography, and simple iconography to keep the app user-friendly for even tech-savvy users.\n- Interactive Education Module: Creating a clean content layout to present articles, planting guides, and productivity tips in a way that is easy to understand on a mobile screen.\n- Simple User Flow: Ensuring that information retrieval and use of smart technology features can be done with minimal steps.",
-    image: "/projects/eduplants/project-3.webp",
-    tags: ["Figma", "UI/UX"],
-    figma:
-      "https://www.figma.com/proto/m7QthIlvusR4ejggrA02qW/LIDM?node-id=105-4954&viewport=606%2C414%2C0.15&t=EQKGnmb3awCjVVY4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=105%3A4954&page-id=105%3A4096",
-    gallery: [
-      { url: "/projects/eduplants/eduplants-1.webp", label: "Logo" },
-      { url: "/projects/eduplants/eduplants-2.webp", label: "Wireframe" },
+    prototypes: [
       {
-        url: "/projects/eduplants/eduplants-3.webp",
-        label: "High-Fidelity",
+        label: "View Prototype",
+        url: "https://www.figma.com/proto/5NDQ7yH0rimWxvz3OySISp/TEAM?node-id=3653-18962&t=wnoNfBfnQbZ4OS54-1&scaling=scale-down&content-scaling=fixed&page-id=15%3A78212&starting-point-node-id=3653%3A18962&show-proto-sidebar=1",
       },
     ],
+    // gallery: [
+    //   { url: "/projects/fibertrust/fibertrust-1.webp", label: "Wireframe" },
+    //   { url: "/projects/fibertrust/fibertrust-2.webp", label: "High-Fidelity" },
+    // ],
   },
-  {
-    id: 22,
-    title: "Furniture Company Profile",
-    categories: ["Web Development", "UI/UX Design", "Web Design"],
-    description:
-      "Interface design (UI/UX) and web front-end development for Fibertrust, a web application for managing trust relationships.",
-    fullDescription:
-      "UI/UX design and front-end implementation project for Fibertrust, a web application specifically designed to facilitate the creation and management of trust relationships.\n\nDesign & Front-End Highlights:\n- Functional UI/UX Design: Designing a professional and structured interface, ensuring the flow of filling out trust agreements, reporting, and field documentation forms is very easy to understand without visual confusion.\n- Front-End Implementation: Translating visual designs into interactive and responsive web interface components, ensuring ease of use and smooth page transitions across various web screen sizes.\n- Data Input Optimization: Simplifying the layout of complex data collection forms, so that officers can enter data quickly and accurately while on duty.",
-    image: "/projects/fibertrust/fibertrust.webp",
-    tags: ["Figma", "Tailwind CSS", "Laravel", "UI/UX", "React"],
-    github: null,
-    gallery: [
-      { url: "/projects/fibertrust/fibertrust-1.webp", label: "Wireframe" },
-      { url: "/projects/fibertrust/fibertrust-2.webp", label: "High-Fidelity" },
-    ],
-  },
+  // {
+  //   id: 21,
+  //   title: "Community Management App",
+  //   categories: ["UI/UX Design", "Mobile Design"],
+  //   description:
+  //     "A digital educational application designed to help modern farmers increase sustainable productivity through smart technology.",
+  //   fullDescription:
+  //     "Eduplants is a UI/UX design for an agricultural education app aimed at modern farmers. The design focuses on creating an inclusive and intuitive interface, making sustainable agriculture information easily accessible to all farmers.\n\nDesign Highlights:\n- Accessibility (User-Friendly): Designing clear navigation elements, easy-to-read typography, and simple iconography to keep the app user-friendly for even tech-savvy users.\n- Interactive Education Module: Creating a clean content layout to present articles, planting guides, and productivity tips in a way that is easy to understand on a mobile screen.\n- Simple User Flow: Ensuring that information retrieval and use of smart technology features can be done with minimal steps.",
+  //   image: "/projects/eduplants/project-3.webp",
+  //   tags: ["Figma", "UI/UX"],
+  //   prototypes: [
+  //     {
+  //       label: "View Prototype",
+  //       url: "https://www.figma.com/proto/m7QthIlvusR4ejggrA02qW/LIDM?node-id=105-4954&viewport=606%2C414%2C0.15&t=EQKGnmb3awCjVVY4-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=105%3A4954&page-id=105%3A4096",
+  //     },
+  //   ],
+  //   gallery: [
+  //     { url: "/projects/eduplants/eduplants-1.webp", label: "Logo" },
+  //     { url: "/projects/eduplants/eduplants-2.webp", label: "Wireframe" },
+  //     {
+  //       url: "/projects/eduplants/eduplants-3.webp",
+  //       label: "High-Fidelity",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 22,
+  //   title: "Furniture Company Profile",
+  //   categories: ["Web Development", "UI/UX Design", "Web Design"],
+  //   description:
+  //     "Interface design (UI/UX) and web front-end development for Fibertrust, a web application for managing trust relationships.",
+  //   fullDescription:
+  //     "UI/UX design and front-end implementation project for Fibertrust, a web application specifically designed to facilitate the creation and management of trust relationships.\n\nDesign & Front-End Highlights:\n- Functional UI/UX Design: Designing a professional and structured interface, ensuring the flow of filling out trust agreements, reporting, and field documentation forms is very easy to understand without visual confusion.\n- Front-End Implementation: Translating visual designs into interactive and responsive web interface components, ensuring ease of use and smooth page transitions across various web screen sizes.\n- Data Input Optimization: Simplifying the layout of complex data collection forms, so that officers can enter data quickly and accurately while on duty.",
+  //   image: "/projects/fibertrust/fibertrust.webp",
+  //   tags: ["Figma", "Tailwind CSS", "Laravel", "UI/UX", "React"],
+  //   github: null,
+  //   gallery: [
+  //     { url: "/projects/fibertrust/fibertrust-1.webp", label: "Wireframe" },
+  //     { url: "/projects/fibertrust/fibertrust-2.webp", label: "High-Fidelity" },
+  //   ],
+  // },
   // {
   //   id: 19,
   //   title: "Banner & Poster Design",
