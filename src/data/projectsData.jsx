@@ -251,10 +251,10 @@ export const projectsData = [
     tags: ["Laravel", "Tailwind CSS", "UI/UX"],
     figma: null,
     github: null,
-    gallery: [
-      "/projects/wedding/wedding-1.webp",
-      "/projects/wedding/wedding-2.webp",
-    ],
+    // gallery: [
+    //   "/projects/wedding/wedding-1.webp",
+    //   "/projects/wedding/wedding-2.webp",
+    // ],
   },
   {
     id: 14,
