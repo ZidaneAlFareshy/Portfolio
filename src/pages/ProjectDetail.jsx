@@ -57,15 +57,17 @@ export const ProjectDetail = () => {
             </h1>
 
             <div className="flex flex-col gap-3 mb-8">
-              {project.link && (
+              {project.links?.map((link, index) => (
                 <a
-                  href={project.link}
+                  key={index}
+                  href={link.url}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/20">
-                  <ArrowUpRight size={18} /> Visit Live Site
+                  <ArrowUpRight size={18} />
+                  {link.label}
                 </a>
-              )}
+              ))}
               {project.github && (
                 <a
                   href={project.github}
@@ -73,6 +75,15 @@ export const ProjectDetail = () => {
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 border border-border rounded-xl font-medium hover:bg-surface transition-all">
                   <Github size={18} /> Source Code
+                </a>
+              )}
+              {project.figma && (
+                <a
+                  href={project.figma}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 border border-border rounded-xl font-medium hover:bg-surface transition-all">
+                  <Figma size={18} /> View Prototype
                 </a>
               )}
             </div>
