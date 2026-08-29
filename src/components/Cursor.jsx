@@ -45,30 +45,42 @@ export default function Cursor() {
 
   return (
     <>
+      {/* Dot Utama */}
       <motion.div
-        className={`fixed top-0 left-0 z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2 will-change-transform
-          w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_var(--color-primary)]
-          transition-opacity duration-300 ${isVisible ? "opacity-100" : "opacity-0"}
-        `}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2 will-change-transform
+          w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_var(--color-primary)]"
         style={{
           x: cursorX,
           y: cursorY,
         }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
       />
 
+      {/* Outline Ring (Besar & Delay) */}
       <motion.div
-        className={`fixed top-0 left-0 z-[9998] pointer-events-none -translate-x-1/2 -translate-y-1/2 will-change-transform
-          border border-primary/50 rounded-full transition-all duration-300 ease-out
-          ${isVisible ? "opacity-100" : "opacity-0"}
-          ${
-            isHovering
-              ? "w-12 h-12 bg-primary/10 border-primary backdrop-blur-[1px]"
-              : "w-8 h-8 bg-transparent"
-          }
-        `}
+        className="fixed top-0 left-0 z-[9998] pointer-events-none -translate-x-1/2 -translate-y-1/2 will-change-transform
+          border border-primary/50 rounded-full 
+          bg-primary/20" /* <-- Background hijau tipis & blur selalu aktif */
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
+          width: "2rem", // Setara dengan w-8 Tailwind
+          height: "2rem", // Setara dengan h-8 Tailwind
+        }}
+        animate={{
+          scale: isHovering ? 1.5 : 1, // Membesar (setara w-12) saat hover
+          opacity: isVisible ? 1 : 0,
+        }}
+        transition={{
+          // Konfigurasi physics untuk membal (bounce)
+          scale: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10, // Semakin kecil angka damping, semakin membal efeknya
+            mass: 0.8,
+          },
+          opacity: { duration: 0.3 },
         }}
       />
     </>

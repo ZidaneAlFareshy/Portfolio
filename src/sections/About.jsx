@@ -58,11 +58,11 @@ export const About = () => {
                 full-stack technologies.
               </p>
 
-              <p>
+              {/* <p>
                 Currently, I am expanding my horizons into Quality Assurance. I
                 believe that great software isn't just about features, but about
                 reliability and a bug-free experience for the end user.
-              </p>
+              </p> */}
             </div>
 
             {/* <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
