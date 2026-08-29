@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom"; // 1. Import flushSync (SANGAT PENTING)
 
 export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-
     const systemPrefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
@@ -29,6 +29,7 @@ export const ThemeToggle = () => {
   const toggleTheme = async (event) => {
     const newMode = !isDark;
 
+    // Fallback untuk browser yang belum support View Transitions
     if (!document.startViewTransition) {
       setIsDark(newMode);
       applyTheme(newMode);
@@ -50,8 +51,12 @@ export const ThemeToggle = () => {
       `${endRadius}px`,
     );
 
+    // 2. Gunakan flushSync agar React merender UI HARI INI JUGA,
+    // sebelum browser memulai animasi lingkaran
     const transition = document.startViewTransition(() => {
-      setIsDark(newMode);
+      flushSync(() => {
+        setIsDark(newMode);
+      });
       applyTheme(newMode);
     });
 
@@ -71,7 +76,7 @@ export const ThemeToggle = () => {
         aria-label="Toggle Theme"
         className="group relative flex h-20 w-10 flex-col items-center rounded-full 
                    border border-border/40 bg-surface/30 p-1 
-                   shadow-lg backdrop-blur-md transition-colors hover:border-primary/50">
+                   shadow-lg backdrop-blur-md transition-colors hover:border-primary/50 cursor-none">
         {/* Indikator Slider */}
         <div
           className={`absolute left-1/2 top-1 h-8 w-8 -translate-x-1/2 rounded-full bg-primary shadow-sm 
@@ -79,7 +84,7 @@ export const ThemeToggle = () => {
                       ${isDark ? "translate-y-10" : "translate-y-0"}`}
         />
 
-        {/* Sun Icon (Light Mode Area) */}
+        {/* Sun Icon */}
         <div className="z-10 flex flex-1 w-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +111,7 @@ export const ThemeToggle = () => {
           </svg>
         </div>
 
-        {/* Moon Icon (Dark Mode Area) */}
+        {/* Moon Icon */}
         <div className="z-10 flex flex-1 w-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -71,6 +71,27 @@
     scroll-behavior: smooth;
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -170,8 +191,8 @@
   }
 
   .glow-border {
-    box-shadow: 0 0 30px
-        color-mix(in srgb, var(--color-primary) 20%, transparent),
+    box-shadow:
+      0 0 30px color-mix(in srgb, var(--color-primary) 20%, transparent),
       inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
   }
 }
@@ -316,8 +337,8 @@
     box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
   }
   .timeline-glow {
-    box-shadow: 0 0 40px
-        color-mix(in srgb, var(--color-primary) 35%, transparent),
+    box-shadow:
+      0 0 40px color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
 }

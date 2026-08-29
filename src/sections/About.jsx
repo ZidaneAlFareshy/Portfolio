@@ -65,12 +65,12 @@ export const About = () => {
               </p>
             </div>
 
-            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
+            {/* <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground">
                 "Committed to continuous learning and creating works that are
                 both aesthetic and functional."
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column */}
