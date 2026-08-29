@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import { motion } from "framer-motion";
 
 export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-
     const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
+      "(prefers-color-scheme: dark)"
     ).matches;
 
     const initialDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
@@ -40,18 +41,20 @@ export const ThemeToggle = () => {
 
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
+      Math.max(y, window.innerHeight - y)
     );
 
     document.documentElement.style.setProperty("--reveal-x", `${x}px`);
     document.documentElement.style.setProperty("--reveal-y", `${y}px`);
     document.documentElement.style.setProperty(
       "--reveal-end-radius",
-      `${endRadius}px`,
+      `${endRadius}px`
     );
 
     const transition = document.startViewTransition(() => {
-      setIsDark(newMode);
+      flushSync(() => {
+        setIsDark(newMode);
+      });
       applyTheme(newMode);
     });
 
@@ -71,15 +74,20 @@ export const ThemeToggle = () => {
         aria-label="Toggle Theme"
         className="group relative flex h-20 w-10 flex-col items-center rounded-full 
                    border border-border/40 bg-surface/30 p-1 
-                   shadow-lg backdrop-blur-md transition-colors hover:border-primary/50">
-        {/* Indikator Slider */}
-        <div
-          className={`absolute left-1/2 top-1 h-8 w-8 -translate-x-1/2 rounded-full bg-primary shadow-sm 
-                      transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] 
-                      ${isDark ? "translate-y-10" : "translate-y-0"}`}
+                   shadow-lg backdrop-blur-md transition-colors hover:border-primary/50 cursor-none">
+        <motion.div
+          className="absolute left-1/2 top-1 h-8 w-8 -translate-x-1/2 rounded-full bg-primary shadow-sm"
+          animate={{
+            y: isDark ? 40 : 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+          }}
         />
 
-        {/* Sun Icon (Light Mode Area) */}
+        {/* Sun Icon */}
         <div className="z-10 flex flex-1 w-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +114,7 @@ export const ThemeToggle = () => {
           </svg>
         </div>
 
-        {/* Moon Icon (Dark Mode Area) */}
+        {/* Moon Icon */}
         <div className="z-10 flex flex-1 w-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

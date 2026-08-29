@@ -3,13 +3,13 @@ import {
   Mail,
   MapPin,
   Phone,
-  Rows,
   Send,
   CheckCircle,
 } from "lucide-react";
 import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 const contactInfo = [
   {
@@ -24,7 +24,6 @@ const contactInfo = [
     value: "085314074917",
     href: "tel:085314074917",
   },
-
   {
     icon: MapPin,
     title: "Location",
@@ -32,6 +31,23 @@ const contactInfo = [
     href: "#",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 20 },
+  },
+};
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -77,6 +93,8 @@ export const Contact = () => {
         type: "success",
         message: "Message sent successfully! I'll get back to you soon.",
       });
+      // Kosongkan form setelah sukses
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("EmailJS error:", error);
       setSubmitStatus({
@@ -88,34 +106,46 @@ export const Contact = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform-gpu" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl transform-gpu" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+      <motion.div
+        className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}>
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <motion.span
+            variants={itemVariants}
+            className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
             Get In Touch
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+          </motion.span>
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-secondary-foreground">
             Let's build{" "}
             <span className="font-serif italic font-normal text-foreground">
-              {" "}
               something great.
             </span>
-          </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-muted-foreground">
             Have a project in mind? I'd love to hear about it. Send me a message
             and let's discuss how we can work together.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-5xl mx-auto">
-          <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
+          {/* Form Area */}
+          <motion.div
+            variants={itemVariants}
+            className="glass p-8 rounded-3xl border border-primary/30 will-change-transform">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
@@ -132,7 +162,7 @@ export const Contact = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   id="name"
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-none"
                 />
               </div>
 
@@ -150,7 +180,8 @@ export const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  id="email"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-none"
                 />
               </div>
 
@@ -168,12 +199,13 @@ export const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                  id="message"
+                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none cursor-none"
                 />
               </div>
 
               <Button
-                className="w-full"
+                className="w-full cursor-none"
                 type="submit"
                 size="lg"
                 disabled={isLoading}>
@@ -187,28 +219,32 @@ export const Contact = () => {
                 )}
               </Button>
 
+              {/* Status Pesan */}
               {submitStatus.type && (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={`flex items-center gap-3 p-4 rounded-xl ${
                     submitStatus.type === "success"
-                      ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                      : "bg-red-500/10 border border-red-500/20 text-red-400"
+                      ? "bg-green-500/10 border border-green-500/20 text-green-500"
+                      : "bg-red-500/10 border border-red-500/20 text-red-500"
                   }`}>
                   {submitStatus.type === "success" ? (
                     <CheckCircle className="w-5 h-5 flex-shrink-0" />
                   ) : (
                     <AlertCircle className="w-5 h-5 flex-shrink-0" />
                   )}
-
                   <p className="text-sm">{submitStatus.message}</p>
-                </div>
+                </motion.div>
               )}
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
+          <div className="space-y-6">
+            <motion.div
+              variants={itemVariants}
+              className="glass rounded-3xl p-8 will-change-transform">
               <h3 className="text-xl font-semibold mb-6">
                 Contact Information
               </h3>
@@ -217,23 +253,25 @@ export const Contact = () => {
                   <a
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group">
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group cursor-none">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <div className="text-sm text-muted-foreground">
-                        {item.label}
+                        {item.title}
                       </div>
                       <div className="font-medium">{item.value}</div>
                     </div>
                   </a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Availability Card */}
-            <div className="glass rounded-3xl p-8 border border-primary/30">
+            <motion.div
+              variants={itemVariants}
+              className="glass rounded-3xl p-8 border border-primary/30 will-change-transform">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                 <span className="font-medium">Currently Available</span>
@@ -243,10 +281,10 @@ export const Contact = () => {
                 Whether you need a full-time engineer or a freelance consultant,
                 let's talk!
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

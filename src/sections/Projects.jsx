@@ -1,33 +1,62 @@
-import { ArrowUpRight } from "lucide-react"; // Github, Figma, Lock dihapus karena sudah tidak dipakai di sini
+import { ArrowUpRight } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { projectsData } from "@/data/projectsData";
-import { Link, useNavigate } from "react-router-dom"; // Tambahkan useNavigate
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 20 },
+  },
+};
 
 export const Projects = () => {
   const featuredProjects = projectsData.slice(0, 4);
-  const navigate = useNavigate(); // Inisialisasi navigate
+  const navigate = useNavigate();
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Bg Glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-highlight/5 rounded-full blur-3xl" />
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-2xl transform-gpu pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-highlight/5 rounded-full blur-2xl transform-gpu pointer-events-none" />
+
+      <motion.div
+        className="container mx-auto px-6 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}>
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <motion.span
+            variants={itemVariants}
+            className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
             Featured Work
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+          </motion.span>
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-secondary-foreground">
             Projects that{" "}
             <span className="font-serif italic font-normal text-foreground">
               make an impact.
             </span>
-          </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-muted-foreground">
             A selection of my recent work, from complex web applications to
             innovative tools that solve real-world problems.
-          </p>
+          </motion.p>
         </div>
 
         {/* Project Grid */}
@@ -39,23 +68,22 @@ export const Projects = () => {
             const hasGithub = !!project.github;
 
             return (
-              <div
+              <motion.div
+                variants={itemVariants}
                 key={project.id}
-                onClick={() => navigate(`/project/${project.id}`)} // Fungsi klik ditambahkan ke detail
-                /* PERBAIKAN: Hover efek disamakan dengan AllProjects, tanpa cursor-pointer */
-                className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1 shadow-sm"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+                onClick={() => navigate(`/project/${project.id}`)}
+                className="group glass rounded-2xl overflow-hidden md:row-span-1 shadow-sm transform-gpu will-change-transform">
                 {/* Image Area */}
                 <div className="relative overflow-hidden aspect-video">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60 pointer-events-none" />
 
-                  {/* Efek transisi overlay tipis saat hover agar lebih dramatis */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 pointer-events-none" />
                 </div>
 
                 {/* Text Area */}
@@ -65,12 +93,11 @@ export const Projects = () => {
                       {project.title}
                     </h3>
 
-                    {/* Badge PRIVATE */}
-                    {isDev && !hasGithub && (
+                    {/* {isDev && !hasGithub && (
                       <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50 ml-2">
                         PRIVATE
                       </span>
-                    )}
+                    )} */}
                   </div>
                   <p className="text-muted-foreground text-sm line-clamp-2">
                     {project.description}
@@ -85,21 +112,21 @@ export const Projects = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* View All CTA */}
-        <div className="text-center mt-12 animate-fade-in animation-delay-500">
+        <motion.div variants={itemVariants} className="text-center mt-12">
           <Link to="/projects">
             <AnimatedBorderButton>
               View All Projects
               <ArrowUpRight className="w-5 h-5" />
             </AnimatedBorderButton>
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
