@@ -5,13 +5,12 @@ import { projectsData } from "@/data/projectsData";
 import { ArrowLeft, ArrowUpRight, Github, Figma, Code2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Varian Animasi untuk efek kemunculan berurutan (Stagger)
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Jeda antar elemen
+      staggerChildren: 0.1,
     },
   },
 };
@@ -52,8 +51,7 @@ export const ProjectDetail = () => {
           <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
           <button
             onClick={() => navigate(-1)}
-            className="text-primary hover:underline cursor-none" // Tetap gunakan cursor-none jika global cursor aktif
-          >
+            className="text-primary hover:underline cursor-none">
             Go back to projects
           </button>
         </motion.div>
@@ -156,14 +154,12 @@ export const ProjectDetail = () => {
 
           {/* KANAN: Scrollable Content */}
           <div className="lg:col-span-8 space-y-12">
-            {/* Gambar Utama (Hero Image) dengan animasi masuk yang dramatis */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} // Custom ease out cubic
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="w-full aspect-video rounded-3xl overflow-hidden bg-muted/20 border border-border/30 shadow-2xl transform-gpu">
               <motion.img
-                // Sedikit efek zoom out saat gambar pertama muncul
                 initial={{ scale: 1.05 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -192,8 +188,7 @@ export const ProjectDetail = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={staggerContainer} // Memunculkan gambar galeri satu per satu
-              >
+                variants={staggerContainer}>
                 <motion.h2
                   variants={slideUpItem}
                   className="text-2xl font-bold mb-6">
@@ -204,16 +199,15 @@ export const ProjectDetail = () => {
                     <motion.div
                       key={idx}
                       variants={slideUpItem}
-                      whileHover={{ scale: 1.02 }} // Efek hover melayang tipis dengan Framer
+                      whileHover={{ scale: 1.02 }}
                       className="relative rounded-2xl overflow-hidden bg-muted/20 aspect-video group border border-border/30 transform-gpu cursor-none">
                       <img
                         src={typeof img === "string" ? img : img.url}
                         alt={`${project.title} gallery ${idx + 1}`}
-                        className="w-full h-full object-cover" // Transisi bawaan CSS dihapus karena bentrok dengan whileHover framer
+                        className="w-full h-full object-cover"
                         loading="lazy"
                       />
 
-                      {/* Label Statis (dipilih sebagai default agar lebih informatif tanpa harus di-hover) */}
                       <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-lg bg-background/80 backdrop-blur-sm border border-border/50">
                         <span className="text-xs font-semibold text-foreground">
                           {typeof img === "object" && img.label

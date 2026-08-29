@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { flushSync } from "react-dom"; // 1. Import flushSync (SANGAT PENTING)
+import { flushSync } from "react-dom";
+import { motion } from "framer-motion";
 
 export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
@@ -7,7 +8,7 @@ export const ThemeToggle = () => {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
+      "(prefers-color-scheme: dark)"
     ).matches;
 
     const initialDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
@@ -29,7 +30,6 @@ export const ThemeToggle = () => {
   const toggleTheme = async (event) => {
     const newMode = !isDark;
 
-    // Fallback untuk browser yang belum support View Transitions
     if (!document.startViewTransition) {
       setIsDark(newMode);
       applyTheme(newMode);
@@ -41,18 +41,16 @@ export const ThemeToggle = () => {
 
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
+      Math.max(y, window.innerHeight - y)
     );
 
     document.documentElement.style.setProperty("--reveal-x", `${x}px`);
     document.documentElement.style.setProperty("--reveal-y", `${y}px`);
     document.documentElement.style.setProperty(
       "--reveal-end-radius",
-      `${endRadius}px`,
+      `${endRadius}px`
     );
 
-    // 2. Gunakan flushSync agar React merender UI HARI INI JUGA,
-    // sebelum browser memulai animasi lingkaran
     const transition = document.startViewTransition(() => {
       flushSync(() => {
         setIsDark(newMode);
@@ -77,11 +75,16 @@ export const ThemeToggle = () => {
         className="group relative flex h-20 w-10 flex-col items-center rounded-full 
                    border border-border/40 bg-surface/30 p-1 
                    shadow-lg backdrop-blur-md transition-colors hover:border-primary/50 cursor-none">
-        {/* Indikator Slider */}
-        <div
-          className={`absolute left-1/2 top-1 h-8 w-8 -translate-x-1/2 rounded-full bg-primary shadow-sm 
-                      transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] 
-                      ${isDark ? "translate-y-10" : "translate-y-0"}`}
+        <motion.div
+          className="absolute left-1/2 top-1 h-8 w-8 -translate-x-1/2 rounded-full bg-primary shadow-sm"
+          animate={{
+            y: isDark ? 40 : 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+          }}
         />
 
         {/* Sun Icon */}

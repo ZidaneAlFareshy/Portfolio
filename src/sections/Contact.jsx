@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion"; // 1. Import Framer Motion
+import { motion } from "framer-motion";
 
 const contactInfo = [
   {
@@ -32,7 +32,6 @@ const contactInfo = [
   },
 ];
 
-// 2. Varian animasi untuk Form dan Kotak Info
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -75,7 +74,7 @@ export const Contact = () => {
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables.",
+          "EmailJS configuration is missing. Please check your environment variables."
         );
       }
 
@@ -87,7 +86,7 @@ export const Contact = () => {
           email: formData.email,
           message: formData.message,
         },
-        publicKey,
+        publicKey
       );
 
       setSubmitStatus({
@@ -110,7 +109,6 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      {/* 3. Optimasi Blur Latar Belakang (pointer-events-none & transform-gpu) */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform-gpu" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl transform-gpu" />

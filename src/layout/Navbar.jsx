@@ -1,18 +1,19 @@
 import { Button } from "@/components/Button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
-  // { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/#experience" },
 ];
+
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +23,27 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleContactClick = () => {
+  useEffect(() => {
+    if (location.hash) {
+      const timeoutId = setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [location]);
+
+  // Fungsi navigasi universal
+  const handleNavClick = (href) => {
     setIsMobileMenuOpen(false);
-    navigate("/#contact");
+
+    navigate(href);
+  };
+
+  const handleContactClick = () => {
+    handleNavClick("/#contact");
   };
 
   return (
@@ -33,35 +52,39 @@ export const Navbar = () => {
         isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
       } z-50`}>
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        <a
-          href="#"
+        <span
+          onClick={() => navigate("/")}
           className="text-xl font-bold tracking-tight hover:text-primary">
           J<span className="text-primary">.</span>
-        </a>
+        </span>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
           <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
             {navLinks.map((link, index) => (
-              <a
-                href={link.href}
+              <button
                 key={index}
+                onClick={() => handleNavClick(link.href)}
                 className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface">
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button size="sm" onClick={handleContactClick}>
+          <Button
+            size="sm"
+            onClick={handleContactClick}
+            className="cursor-none">
             Contact Me
           </Button>
         </div>
+
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground cursor-pointer"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}>
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -72,13 +95,12 @@ export const Navbar = () => {
         <div className="md:hidden glass-strong animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link, index) => (
-              <a
-                href={link.href}
+              <button
                 key={index}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg text-muted-foreground hover:text-foreground py-2">
+                onClick={() => handleNavClick(link.href)}
+                className="text-lg text-muted-foreground hover:text-foreground py-2 text-left">
                 {link.label}
-              </a>
+              </button>
             ))}
             <Button onClick={handleContactClick} className="w-full">
               Contact Me

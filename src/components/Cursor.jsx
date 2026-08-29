@@ -61,23 +61,22 @@ export default function Cursor() {
       <motion.div
         className="fixed top-0 left-0 z-[9998] pointer-events-none -translate-x-1/2 -translate-y-1/2 will-change-transform
           border border-primary/50 rounded-full 
-          bg-primary/20" /* <-- Background hijau tipis & blur selalu aktif */
+          bg-primary/20"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
-          width: "2rem", // Setara dengan w-8 Tailwind
-          height: "2rem", // Setara dengan h-8 Tailwind
+          width: "2rem",
+          height: "2rem",
         }}
         animate={{
-          scale: isHovering ? 1.5 : 1, // Membesar (setara w-12) saat hover
+          scale: isHovering ? 1.5 : 1,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{
-          // Konfigurasi physics untuk membal (bounce)
           scale: {
             type: "spring",
             stiffness: 400,
-            damping: 10, // Semakin kecil angka damping, semakin membal efeknya
+            damping: 10,
             mass: 0.8,
           },
           opacity: { duration: 0.3 },

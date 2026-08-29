@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
 const experiences = [
-  // ... data array experiences milikmu tetap sama, saya tidak mengubahnya
   {
     period: "Mar 2025 - Present",
     role: "UI/UX Designer & Front-End Developer",
@@ -101,7 +100,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 }, // Memberi jeda kemunculan otomatis
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -117,10 +116,8 @@ const itemVariants = {
 export const Experience = () => {
   return (
     <section id="experience" className="py-32 relative overflow-hidden">
-      {/* Bg Glow dioptimasi agar tidak membebani render */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none transform-gpu" />
 
-      {/* Gunakan motion.div sebagai container utama yang memonitor scroll */}
       <motion.div
         className="container mx-auto px-6 relative z-10"
         variants={containerVariants}
@@ -159,7 +156,6 @@ export const Experience = () => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                // Hapus inline animationDelay dan biarkan framer motion mengaturnya
                 className="relative grid md:grid-cols-2 gap-8 transform-gpu will-change-transform">
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 bg-primary rounded-full -translate-x-1/2 ring-4 ring-background z-10">

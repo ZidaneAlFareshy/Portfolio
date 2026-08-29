@@ -2,15 +2,14 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { projectsData } from "@/data/projectsData";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // 1. Import Framer Motion
+import { motion } from "framer-motion";
 
-// 2. Buat konfigurasi animasi
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Jeda antar card saat muncul
+      staggerChildren: 0.2,
     },
   },
 };
@@ -30,18 +29,15 @@ export const Projects = () => {
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Bg Glows - Kita kurangi blur-nya sedikit atau buat statis murni */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-2xl transform-gpu pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-highlight/5 rounded-full blur-2xl transform-gpu pointer-events-none" />
 
-      {/* 3. Gunakan motion.div dan trigger whileInView */}
       <motion.div
         className="container mx-auto px-6 relative z-10"
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible" // Animasi jalan HANYA saat di-scroll ke area ini
-        viewport={{ once: true, margin: "-100px" }} // Trigger animasi sebelum card benar-benar masuk layar
-      >
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}>
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <motion.span
@@ -72,7 +68,6 @@ export const Projects = () => {
             const hasGithub = !!project.github;
 
             return (
-              // 4. Hapus inline style animationDelay dan CSS animate-fade-in
               <motion.div
                 variants={itemVariants}
                 key={project.id}
@@ -83,7 +78,6 @@ export const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    // Tambahkan loading="lazy" agar gambar di-load hanya saat diperlukan
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform"
                   />
@@ -99,11 +93,11 @@ export const Projects = () => {
                       {project.title}
                     </h3>
 
-                    {isDev && !hasGithub && (
+                    {/* {isDev && !hasGithub && (
                       <span className="text-[10px] font-bold tracking-wider text-muted-foreground border border-border px-2 py-1 rounded bg-surface/50 ml-2">
                         PRIVATE
                       </span>
-                    )}
+                    )} */}
                   </div>
                   <p className="text-muted-foreground text-sm line-clamp-2">
                     {project.description}

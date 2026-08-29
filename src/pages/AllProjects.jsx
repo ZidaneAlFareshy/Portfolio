@@ -4,14 +4,13 @@ import { projectsData } from "@/data/projectsData";
 import { ChevronDown } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"; // 1. Import Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 
-// Varian untuk efek muncul berurutan (stagger)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }, // Muncul satu per satu dengan cepat
+    transition: { staggerChildren: 0.1 },
   },
 };
 
@@ -67,17 +66,17 @@ export const AllProjects = () => {
           </p>
         </motion.div>
 
-        {/* Filter Categories */}
+        {/* Filter Categories Mobile */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-3 mb-12">
+          className="flex overflow-x-auto md:flex-wrap md:justify-center gap-4 mb-8 py-6 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border cursor-none ${
+              className={`whitespace-nowrap flex-shrink-0 snap-start px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border cursor-none ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground border-primary shadow-[0_0_15px_var(--color-primary)]"
                   : "bg-surface text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
@@ -87,7 +86,7 @@ export const AllProjects = () => {
           ))}
         </motion.div>
 
-        {/* Grid Projects - Menggunakan AnimatePresence untuk filter transisi */}
+        {/* Grid Projects */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -97,25 +96,23 @@ export const AllProjects = () => {
             {filteredProjects.slice(0, visibleCount).map((project) => {
               return (
                 <motion.div
-                  layout // Ini kunci agar card bergeser mulus saat filter diklik
+                  layout
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   key={project.id}
                   onClick={() => navigate(`/project/${project.id}`)}
-                  // Hapus animate-fade-in Tailwind, gunakan hover dan will-change dari Tailwind
                   className="group glass rounded-2xl overflow-hidden flex flex-col transform-gpu will-change-transform transition-transform duration-300 hover:-translate-y-2 cursor-none shadow-sm hover:shadow-md">
                   {/* Image Container */}
                   <div className="relative overflow-hidden aspect-video bg-muted/20">
                     <img
                       src={project.image}
                       alt={project.title}
-                      loading="lazy" // Penting untuk performa scroll
+                      loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transform-gpu transition-transform duration-700 group-hover:scale-110"
                     />
-                    {/* pointer-events-none agar tidak menghalangi event klik */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500 pointer-events-none" />
                   </div>
 
