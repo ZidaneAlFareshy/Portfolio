@@ -71,6 +71,11 @@
     scroll-behavior: smooth;
   }
 
+  html,
+  body {
+    overflow: hidden;
+  }
+
   html.lenis,
   html.lenis body {
     height: auto;
@@ -122,6 +127,7 @@
       cursor: none;
     }
 
+    /* Pastikan elemen clickable juga tidak memunculkan kursor tangan default */
     a,
     button,
     [role="button"],
