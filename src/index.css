@@ -73,7 +73,16 @@
 
   html,
   body {
-    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   html.lenis,
