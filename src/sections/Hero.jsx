@@ -146,10 +146,10 @@ export const Hero = () => {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
                 },
-                {
-                  icon: Dribbble,
-                  href: "https://dribbble.com/zidane_al_fareshy",
-                },
+                // {
+                //   icon: Dribbble,
+                //   href: "https://dribbble.com/zidane_al_fareshy",
+                // },
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
