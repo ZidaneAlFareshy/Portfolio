@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    period: "Mar 2025 - Present",
+    period: "Mar 2025 - Oct 2026",
     role: "UI/UX Designer & Front-End Developer",
     company: "CV Akses Digital",
     description:

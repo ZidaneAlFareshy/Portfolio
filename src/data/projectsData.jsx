@@ -10,7 +10,14 @@ export const projectsData = [
     fullDescription:
       "This project focuses on redesigning the Voma Tasty Edits user interface specifically for mobile platforms. As a video order management application, its primary focus is to simplify the workflow and communication between two main user roles: Clients and Video Editors.",
     image: "/projects/voma/project-2.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: [
+      "Figma",
+      "UI/UX",
+      "Wireframe",
+      "Design System",
+      "UI Design",
+      "Usability Testing",
+    ],
     figma: null,
     gallery: [
       { url: "/projects/voma/voma-1.webp", label: "User Wireframe" },
@@ -31,7 +38,15 @@ export const projectsData = [
     fullDescription:
       "The official website of Gudang Elektronik CRB is designed as a product catalog and company profile center. Built using the WordPress and Elementor ecosystem, this website is focused on providing clear product information, from TVs, Washing Machines, to Refrigerators.\n\nKey Features:\n- AC PK Calculator: A special interactive feature to help customers calculate AC capacity requirements (BTU/PK) automatically based on room size.\n- Catalog & Marketplace Integration: Displays officially guaranteed products with direct navigation to external sales platforms.\n- Educational Blog: Provides electronic shopping guide articles to help customers make purchasing decisions.",
     image: "/projects/elektronik/project-5.webp",
-    tags: ["Wordpress", "Elementor", "Woocommerce", "UI/UX"],
+    tags: [
+      "Wordpress",
+      "Elementor",
+      "Woocommerce",
+      "UI/UX",
+      "UI Design",
+      "Wireframe",
+      "Usability Testing",
+    ],
     links: [
       {
         label: "Visit Site",
@@ -53,7 +68,7 @@ export const projectsData = [
     fullDescription:
       "UI/UX and web design project for Majapahit Plants, an MSME initiative engaged in the cultivation of medicinal plants and traditional herbal concoctions, while providing a modern catalog browsing experience for users.",
     image: "/projects/p2mw/project-15.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: ["Figma", "UI/UX", "UI Design", "Logo Design"],
     figma: null,
     gallery: [
       { url: "/projects/p2mw/p2mw-1.webp", label: "Logo" },
@@ -68,7 +83,7 @@ export const projectsData = [
     fullDescription:
       "A front-end exploration project focused on recreating (duplicating) the Zentry website interface. It was built using React.js and Vite to ensure fast performance, combined with Tailwind CSS to speed up styling and ensure responsive design across various screen sizes.",
     image: "/projects/zentry/project-10.webp",
-    tags: ["React", "Vite", "Tailwind CSS"],
+    tags: ["React", "Vite", "Tailwind CSS", "GSAP"],
     github: "https://github.com/ZidaneAlFareshy/Zentry",
     links: [
       {
@@ -90,7 +105,7 @@ export const projectsData = [
     fullDescription:
       "UI/UX design project for a travel guide application that exclusively maps and promotes top destinations in the Cirebon Regency area, with area boundaries outside the City of Cirebon. The main objective of this design is to present regional tourism information through a clean and easy-to-use interface.\n\nDesign Highlights:\n- Specific Region Curation: Designing a layout that focuses on highlighting tourist spots in the regency area so that they are easily searched by tourists.\n- Wireframe to High-Fidelity: Translating basic structural concepts into interactive final visual designs using Figma.",
     image: "/projects/wisata/project-1.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: ["Figma", "UI/UX", "Wireframe", "Design System", "User Flow"],
     figma: null,
     gallery: [
       { url: "/projects/wisata/wisata-1.webp", label: "Wireframe" },
@@ -109,7 +124,7 @@ export const projectsData = [
     fullDescription:
       "Eduplants is a UI/UX design for an agricultural education app aimed at modern farmers. The design focuses on creating an inclusive and intuitive interface, making sustainable agriculture information easily accessible to all farmers.\n\nDesign Highlights:\n- Accessibility (User-Friendly): Designing clear navigation elements, easy-to-read typography, and simple iconography to keep the app user-friendly for even tech-savvy users.\n- Interactive Education Module: Creating a clean content layout to present articles, planting guides, and productivity tips in a way that is easy to understand on a mobile screen.\n- Simple User Flow: Ensuring that information retrieval and use of smart technology features can be done with minimal steps.",
     image: "/projects/eduplants/project-3.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: ["Figma", "UI/UX", "Wireframe", "Design System", "Usability Testing"],
     prototypes: [
       {
         label: "View Prototype",
@@ -135,7 +150,7 @@ export const projectsData = [
     fullDescription:
       "An end-to-end project combining UI/UX design and front-end development for a local coffee bean. The primary focus was translating the brand identity into a visually appealing and technically optimized digital experience.\n\nProject Highlights:\n- UI/UX Design (Figma): Designed a modern, warm, and user-centric interface to highlight the product menu and shop's appeal.\n- Slicing & Styling: Translated the visual design into clean and efficient front-end code, ensuring a fully responsive layout across both mobile and desktop devices.\n- Visual Identity: Implemented a consistent color scheme and typography to reinforce the coffee's branding.",
     image: "/projects/indo-coffe/project-4.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: ["Figma", "UI/UX", "Bootstrap", "UI Design"],
     github: "https://github.com/ZidaneAlFareshy/Indo-Coffee",
     gallery: [
       { url: "/projects/indo-coffe/indo-coffe-1.webp", label: "Logo" },
@@ -151,7 +166,7 @@ export const projectsData = [
     fullDescription:
       "This project was an interface redesign initiative for a college profile website that previously had an outdated visual appearance. The main goal of this design was to modernize the visual aesthetic and improve the user experience so that prospective students can easily explore the institution's information.\n\nDesign Highlights:\n- Visual Modernization: Updating the rigid layout to a fresh, dynamic, and professional landing page design, in line with the image of today's educational institutions.\n- Information Hierarchy: Reorganizing the content flow to highlight important information such as campus facilities, study programs, and registration to make it more intuitive and accessible.\n- Readability Improvement: Creating a clean interface (clean UI) by optimizing the use of whitespace and typography for user reading comfort.",
     image: "/projects/campus/project-6.webp",
-    tags: ["Figma", "UI/UX"],
+    tags: ["Figma", "UI/UX", "UI Design"],
     figma: null,
     gallery: [
       { url: "/projects/campus/campus-1.webp" },
@@ -169,7 +184,7 @@ export const projectsData = [
     fullDescription:
       "This project focused solely on UI/UX design and front-end implementation for a comprehensive organizational management system. Since the application handles complex modules such as projects, resources, infrastructure, finance, and customer relationships, the primary challenge was simplifying the presentation of operational-level data into a user-friendly interface.",
     image: "/projects/project-7.webp",
-    tags: ["Laravel", "UI/UX"],
+    tags: ["Laravel", "UI/UX", "Bootstrap", "UI Design", "Design System"],
     figma: null,
     github: "https://github.com/ZidaneAlFareshy/Akses-Digital",
     // gallery: [
@@ -187,7 +202,14 @@ export const projectsData = [
     fullDescription:
       "UI/UX design and front-end implementation project for a web-based Point of Sales (POS) system. Integrating order flow management, shipping status tracking, warehouse inventory, and cash flow recording into one centralized dashboard.\n\nDesign & Front-End Highlights:\n- Comprehensive Dashboard Layout: Designed a clean navigation structure (sidebar) to group complex operational modules for easy admin management.\n- Structured Order Interface: Structured the cart page with a clear visual division of space between product listing, customer data input, and billing summary to ensure accurate order entry.\n- Modern & Clean Styling: Utilized Tailwind CSS to present the interface with a clean UI style and bold accent color contrast, making data tables and forms very comfortable to read.",
     image: "/projects/project-8.webp",
-    tags: ["Laravel", "Vite", "Tailwind CSS", "UI/UX"],
+    tags: [
+      "Laravel",
+      "Vite",
+      "Tailwind CSS",
+      "UI/UX",
+      "Usability Testing",
+      "Prototype",
+    ],
 
     prototypes: [
       {
@@ -252,7 +274,13 @@ export const projectsData = [
     fullDescription:
       "This project focuses on UI/UX design and front-end development for a digital wedding invitation platform. The main goal is to create a stunning and romantic visual experience, while ensuring the invitation is perfectly accessible to guests across various screen sizes.\n\nDevelopment Highlights:\n- Visual Aesthetic Design (UI/UX): Designing a layout that focuses on beautiful typography, color harmony, and visual elements that reflect the theme of the wedding event.\n- Styling & Slicing: Translating the design into clean front-end code, ensuring a mobile-first approach so the invitation looks perfect on mobile screens.\n- Component Integration (Laravel): Leveraging Laravel's templating system to structure the HTML and front-end components to be more clean, modular, and easy to manage.",
     image: "/projects/wedding/project-11.webp",
-    tags: ["Laravel", "Tailwind CSS", "UI/UX"],
+    tags: [
+      "Laravel",
+      "Tailwind CSS",
+      "UI/UX",
+      "Graphic Design",
+      "CSS Animation",
+    ],
     figma: null,
     github: null,
     // gallery: [
@@ -353,7 +381,7 @@ export const projectsData = [
     fullDescription:
       "UI/UX design and front-end implementation project for Mobile Bapelang, a mobile application specifically designed to facilitate the creation and management of PLN Minutes.\n\nDesign & Front-End Highlights:\n- Functional UI/UX Design: Designing a professional and structured interface, ensuring the flow of filling out minutes, reporting, and field documentation forms is very easy to understand without visual confusion.\n- Front-End Implementation: Translating visual designs into interactive and responsive mobile interface components, ensuring ease of use and smooth page transitions across various mobile screen sizes.\n- Data Input Optimization: Simplifying the layout of complex data collection forms, so that officers can enter data quickly and accurately while on duty.",
     image: "/projects/bapelang/bapelang.webp",
-    tags: ["Figma", "Flutter", "UI/UX"],
+    tags: ["Figma", "Flutter", "UI/UX", "Wireframe"],
     github: null,
     gallery: [
       { url: "/projects/bapelang/bapelang-1.webp", label: "Wireframe" },
@@ -369,7 +397,14 @@ export const projectsData = [
     fullDescription:
       "On this Fibertrust project, I handled the process from start to finish, from conceptualizing the design to coding the interface. This application is primarily used to monitor tasks and report on field workers.\n\nMy work began with designing the UI and creating an interactive prototype in Figma to ensure the application flow was user-friendly. Once the design was finalized, I executed the front-end interface using a combination of Tailwind CSS and the Laravel templating ecosystem.",
     image: "/projects/fibertrust/fibertrust.webp",
-    tags: ["Figma", "Tailwind CSS", "Laravel", "UI/UX"],
+    tags: [
+      "Figma",
+      "Tailwind CSS",
+      "Laravel",
+      "UI/UX",
+      "Prototype",
+      "Design System",
+    ],
     prototypes: [
       {
         label: "View Prototype",

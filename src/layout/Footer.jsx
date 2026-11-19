@@ -8,11 +8,11 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/mohammad-jindan-dubbay-al-faresh-7416a7261/",
     label: "LinkedIn",
   },
-  {
-    icon: Dribbble,
-    href: "https://dribbble.com/zidane_al_fareshy",
-    label: "Dribbble",
-  },
+  // {
+  //   icon: Dribbble,
+  //   href: "https://dribbble.com/zidane_al_fareshy",
+  //   label: "Dribbble",
+  // },
 ];
 
 const footerLinks = [
